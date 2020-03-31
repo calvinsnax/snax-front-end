@@ -1,0 +1,188 @@
+// breakPoints
+// $small-w: 376px;
+$small-w: 414px;
+$medium-w: 768px;
+$large-w: 1024px;
+$x-large-w: 1200px;
+$xx-large-w: 1400px;
+$wide-w: 1600px;
+$x-wide-w: 1920px;
+
+$breakpoints: (
+  small: $small-w,
+  medium: $medium-w,
+  large: $large-w,
+  x-large: $x-large-w,
+  xx-large: $xx-large-w,
+  wide: $wide-w,
+  x-wide: $x-wide-w,
+);
+
+$font-family: 'NotoSansKR', 'Noto Sans KR', 'Apple SD Gothic Neo',
+  AppleSDGothicNeo, 'Noto Sans CJK KR', 'NanumGothic', 'Malgun Gothic',
+  '맑은 고딕', 돋움, dotum, arial, sans-serif;
+
+// color
+// ─────────────────────────────────────────────
+
+$color-primary: #2957ff;
+$color-secondary: #fbb946;
+
+$color-success: #13ce66;
+$color-warning: #f7ba2a;
+$color-danger: #ff5a57;
+$color-info: #909399;
+
+// Text
+$color-text-primary: #333333;
+$color-text-default: #8b8b8b;
+$color-text-secondary: #898989;
+$color-text-placeholder: $color-text-secondary;
+$color-text-muted: #686679;
+
+// Border
+$color-border-light: #c3c3c3;
+$color-border-lighter: #e1e1e1;
+$color-border-extralight: #f4f4f4;
+
+// Background
+$color-background: #f4f4f4;
+$color-background-light: #f9f9f9;
+
+// Icon
+$color-icon-base: $color-text-default;
+$color-icon-light: #adadad;
+$color-icon-lighter: #d5d5d5;
+
+// Button
+$color-button-default-hover: #e6e6e6;
+
+// color - grayscale
+$color-gray-100: #fafafa;
+$color-gray-200: #f5f5f5;
+$color-gray-300: #eeeeee;
+$color-gray-400: #e0e0e0;
+$color-gray-500: #bdbdbd;
+$color-gray-600: #757575;
+$color-gray-700: #616161;
+$color-gray-800: #424242;
+$color-gray-900: #212121;
+
+// Lighted
+$color-lighted-0: rgba($oc-white, 0.1);
+$color-lighted-1: rgba($oc-white, 0.2);
+$color-lighted-2: rgba($oc-white, 0.3);
+$color-lighted-3: rgba($oc-white, 0.4);
+$color-lighted-4: rgba($oc-white, 0.5);
+$color-lighted-5: rgba($oc-white, 0.6);
+$color-lighted-6: rgba($oc-white, 0.7);
+$color-lighted-7: rgba($oc-white, 0.8);
+$color-lighted-8: rgba($oc-white, 0.9);
+
+// Muted
+$color-muted-0: rgba(black, 0.1);
+$color-muted-1: rgba(black, 0.2);
+$color-muted-2: rgba(black, 0.3);
+$color-muted-3: rgba(black, 0.4);
+$color-muted-4: rgba(black, 0.5);
+$color-muted-5: rgba(black, 0.6);
+$color-muted-6: rgba(black, 0.7);
+$color-muted-7: rgba(black, 0.8);
+$color-muted-8: rgba(black, 0.9);
+
+// font
+// ─────────────────────────────────────────────
+
+$font-size-0: 11px !default; // 11px
+$font-size-1: 0.75rem !default; // 12px
+$font-size-2: 13px !default; // 13px
+$font-size-3: 0.875rem !default; // 14px
+$font-size-4: 1rem !default; // 16px
+$font-size-5: 18px !default; // 18px
+$font-size-6: 1.25rem !default; // 20px
+$font-size-7: 1.5rem !default; // 24px
+$font-size-8: 2rem !default; // 32px
+$font-size-9: 2.625rem !default; // 42px
+
+$font-weight-thin: 100 !default;
+$font-weight-light: 200 !default;
+$font-weight-demilight: 300 !default;
+$font-weight-regular: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-bold: 600 !default;
+$font-weight-black: 700 !default;
+
+// border-radius
+// ─────────────────────────────────────────────
+
+$border-radius-1: 0.25rem;
+$border-radius-2: 0.5rem;
+$border-radius-3: 0.75rem;
+
+//  Padding
+//  ───────────────────────────────────
+
+$padding-0: 5px !default;
+$padding-1: 10px !default;
+$padding-2: 15px !default;
+$padding-3: 20px !default;
+$padding-4: 30px !default;
+$padding-5: 40px !default;
+$padding-6: 50px !default;
+$padding-7: 60px !default;
+$padding-8: 100px !default;
+$padding-9: 140px !default;
+
+//  Margin
+//  ───────────────────────────────────
+
+$margin-0: 5px !default;
+$margin-1: 10px !default;
+$margin-2: 15px !default;
+$margin-3: 20px !default;
+$margin-4: 30px !default;
+$margin-5: 40px !default;
+$margin-6: 50px !default;
+$margin-7: 60px !default;
+
+// base-nav
+$base-nav-height: 4.25rem !default;
+
+// CSS variable export
+// ─────────────────────────────────────────────
+
+:root {
+  --font-family: #{$font-family};
+
+  --color-primary: #{$color-primary};
+  --color-secondary: #{$color-secondary};
+
+  --color-success: #{$color-success};
+  --color-warning: #{$color-warning};
+  --color-danger: #{$color-danger};
+  --color-info: #{$color-info};
+
+  // Text
+  --color-text-primary: #{$color-text-primary};
+  --color-text-default: #{$color-text-default};
+  --color-text-secondary: #{$color-text-secondary};
+  --color-text-placeholder: #{$color-text-placeholder};
+  --color-text-muted: #{$color-text-muted};
+
+  // Border
+  --color-border-light: #{$color-border-light};
+  --color-border-lighter: #{$color-border-lighter};
+  --color-border-extralight: #{$color-border-extralight};
+
+  // Background
+  --color-background: #{$color-background};
+  --color-background-light: #{$color-background-light};
+
+  // Icon
+  --color-icon-base: #{$color-icon-base};
+  --color-icon-light: #{$color-icon-light};
+  --color-icon-lighter: #{$color-icon-lighter};
+
+  // Button
+  --color-button-default-hover: #{$color-button-default-hover};
+}

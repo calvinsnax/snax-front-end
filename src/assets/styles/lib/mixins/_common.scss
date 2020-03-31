@@ -1,0 +1,48 @@
+// set ellipsis
+@mixin ellipsis() {
+  min-width: 0; // for flex
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin common-font() {
+  font-family: $font-family;
+}
+
+// 인자 $hover에 :false를 주입하는 이유는 그냥 사용하면
+// 값이 없다고 에러가 나오기 떄문에 초기화값을 넣어주는 것
+@mixin custom-scroll($hover: false) {
+  overflow-y: overlay;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+    transition: 250ms;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    transition: 250ms;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(black, 0.1);
+    border-radius: 20px;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    transition: 250ms;
+  }
+
+  @if $hover {
+    &:hover {
+      &::-webkit-scrollbar,
+      &::-webkit-scrollbar-track,
+      &::-webkit-scrollbar-thumb {
+        display: block;
+      }
+    }
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-thumb {
+      display: none;
+    }
+  }
+}

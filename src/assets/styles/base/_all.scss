@@ -1,0 +1,19 @@
+@import 'text';
+@import 'typhography';
+
+// @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+html {
+  font-family: $font-family;
+  font-size: initial;
+  background-color: white;
+}
+
+html,
+body {
+  font-family: $font-family;
+}
+
+hr {
+  border-color: $color-gray-300;
+}
