@@ -32,6 +32,7 @@
               name="password"
               v-model="password"
               placeholder="•••••••••"
+              @keypress.enter.exact="submit"
             />
           </AppFormInput>
         </ValidationProvider>
@@ -47,6 +48,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import AuthContainer from '@/components/auth/AuthContainer'
 
 export default {
@@ -69,8 +71,10 @@ export default {
   },
 
   methods: {
-    submit() {
-      this.$toast.show({ message: '로그인 테스트 중입니다.' })
+    ...mapActions('auth', ['login']),
+    async submit() {
+      if (!this.formActive || this.invalid) return
+      await this.login({ email: this.email, password: this.password })
     },
   },
 }

@@ -19,10 +19,15 @@
       @keydown.down.exact="upAndDown"
     >
       <span :class="$style.label">{{ label || placeholder }}</span>
-      <AppIcon
+      <!-- <AppIcon
         :class="[$style.icon, isEnabled && $style.active]"
         name="icons/arrow-top-outline"
-      ></AppIcon>
+      ></AppIcon> -->
+      <i
+        class="el-icon-caret-bottom"
+        :class="[$style.icon, isEnabled && $style.active]"
+      >
+      </i>
     </button>
 
     <transition>
@@ -168,10 +173,10 @@ export default {
   width: auto;
   min-width: 142px;
   height: 45px;
-  color: $color-text-primary;
-  font-size: 14px;
+  color: black;
+  font-size: 0.875rem;
   background-color: white;
-  border-radius: $border-radius-1;
+  border-radius: $border-radius-2;
 }
 .selectButton {
   display: inline-flex;
@@ -205,9 +210,8 @@ export default {
 
   // 화살표 아이콘
   .icon {
-    fill: $color-text-primary;
-    width: 15px;
-    height: 15px;
+    color: $color-gray-600;
+    font-size: 1rem;
     transition: 250ms ease;
     &.active {
       transform: rotate(180deg);
@@ -215,11 +219,11 @@ export default {
   }
 
   &.placeholder {
-    color: var(--color-text-secondary);
+    color: $color-gray-600;
   }
 
   &.error {
-    color: var(--color-danger);
+    color: $color-danger;
   }
 
   &.expand {

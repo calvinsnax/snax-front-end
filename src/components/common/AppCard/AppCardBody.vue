@@ -1,15 +1,23 @@
 <template>
-  <div class="app-card-body" :class="$style.appCardBody">
+  <div
+    class="app-card-body"
+    :class="$style.appCardBody"
+    :style="{ padding: padding }"
+  >
     <slot></slot>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    padding: String,
+  },
+}
 </script>
 
 <style lang="scss" module scoped>
 .appCardBody {
-  padding: 1.625rem;
+  padding: 1rem;
 }
 </style>

@@ -19,7 +19,7 @@
           >
         </HomeCard>
 
-        <HomeCard overflow>
+        <HomeCard overflow href="https://calvinsnax.com/" target="_blank">
           <HomeCardMedia src="/img/old_snax@2x.jpg" />
           <HomeCardBody>
             <div class="tw-flex tw-items-center">
@@ -36,19 +36,25 @@
           </HomeCardBody>
         </HomeCard>
 
-        <HomeCard overflow>
+        <HomeCard overflow :to="{ name: 'product', params: { id: 'equeer' } }">
           <HomeCardMedia src="/img/thumb_equeer.jpg" />
           <HomeCardBody dense>
             <HomeProductItem
+              item-id="equeer"
               src="/img/thumb_equeer.jpg"
               title="이퀴어 테마 패키지"
               desc="커뮤니티 사이트를 위한 최적의 솔루션"
               :price="40000"
+              none-padding
             />
           </HomeCardBody>
         </HomeCard>
 
-        <HomeCard overflow :span="2">
+        <HomeCard
+          overflow
+          :span="2"
+          :to="{ name: 'product', params: { id: 'eden' } }"
+        >
           <HomeCardMedia src="/img/thumb_eden.jpg" absolute />
 
           <HomeCardBody expand lighten>
@@ -61,7 +67,11 @@
           </HomeCardBody>
         </HomeCard>
 
-        <HomeCard overflow :span="2">
+        <HomeCard
+          overflow
+          :span="2"
+          :to="{ name: 'product', params: { id: 'circulator' } }"
+        >
           <HomeCardMedia src="/img/thumb_circulator-2.png" />
           <HomeCardBody
             style="background: linear-gradient(to right, rgb(21, 148, 255) 10%, rgb(167, 211, 247) 62%, rgb(191, 216, 243) 84%)"
@@ -81,24 +91,28 @@
             <AppSpacer />
 
             <HomeProductItem
+              item-id="equeer"
               src="/img/thumb_equeer.jpg"
               title="이퀴어 테마 패키지"
               desc="커뮤니티 사이트를 위한 최적의 솔루션"
               :price="40000"
             />
             <HomeProductItem
+              item-id="eden"
               src="/img/thumb_eden.jpg"
               title="EDEN 게시판 스킨"
               desc="기본기를 갖춘 가벼운 게시판 스킨"
               :price="40000"
             />
             <HomeProductItem
+              item-id="hios"
               src="/img/thumb_hios.jpg"
               title="Hios 회원모듈 스킨 세트"
               desc="회원 페이지를 새롭게"
               :price="40000"
             />
             <HomeProductItem
+              item-id="circulatorr"
               src="/img/thumb_circulator.jpg"
               title="C!irculator 알림센터 스킨"
               desc="센스있는 알림 디자인"
@@ -154,8 +168,16 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 3rem;
 
+  @media (max-width: $large-w) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
   & > li {
     min-width: 0;
+
+    @media (max-width: $medium-w) {
+      grid-column: auto !important;
+    }
   }
 }
 </style>

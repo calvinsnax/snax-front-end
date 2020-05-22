@@ -31,13 +31,14 @@ export default {
     onClickClose(e) {
       // const reference = '.' + this.select.$el.className
       const isReference = e.target.closest('.app-select')
+      const isParent = e.target.closest('.app-form-input')
 
       // console.info('e.target: ', e.target)
       // console.info('reference: ', reference)
       // console.log(e.target.closest('.app-select'))
 
       // 클릭 대상이 select가 아닐 경우
-      if (!isReference) this.$emit('input', false)
+      if (!isReference && !isParent) this.$emit('input', false)
     },
   },
 }
@@ -55,8 +56,9 @@ export default {
   padding: 0;
   margin: $margin-0 0 0;
   background-color: white;
-  border-radius: $border-radius-1;
-  box-shadow: rgba(black, 0.2) 0 2px 20px;
+  border-radius: $border-radius-2;
+  border: 1px solid $color-gray-300;
+  box-shadow: rgba(black, 0.1) 0 2px 20px;
 
   overflow: auto;
   transform-origin: top;

@@ -1,12 +1,7 @@
 <template>
-  <router-link
-    :to="to"
-    :exact="exact"
-    class="base-nav-item"
-    :class="{ 'is-profile': profile }"
-  >
+  <component :is="componentId" :to="to" :exact="exact" class="base-nav-item">
     <slot />
-  </router-link>
+  </component>
 </template>
 
 <script>
@@ -14,56 +9,33 @@ export default {
   props: {
     to: {},
     exact: [Boolean, String],
-    profile: [Boolean, String],
+  },
+
+  computed: {
+    componentId() {
+      if (!this.to) return 'a'
+      return 'router-link'
+    },
   },
 }
 </script>
 
 <style lang="scss">
 .base-nav-item {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  cursor: pointer;
+
+  display: inline-flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  padding: 0.5rem;
+  margin-left: 1rem;
+
+  color: black;
   text-decoration: none;
-  color: $oc-gray-6;
-  font-size: 0.75rem;
-  &.router-link-active {
-    color: $color-primary;
-  }
+  border-radius: 100%;
 
   i {
     font-size: 1.25rem;
-  }
-
-  // 프로필
-  &.is-profile {
-    &.router-link-active {
-      .base-nav-profile-image {
-        box-shadow: $color-primary 0 0 0 1px;
-      }
-    }
-
-    .base-nav-profile-image {
-      position: relative;
-      width: 26px;
-      height: 26px;
-      border-radius: 100%;
-      border: 2px solid transparent;
-      overflow: hidden;
-      transition: 250ms;
-      img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-      }
-    }
   }
 }
 </style>

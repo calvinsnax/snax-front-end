@@ -11,21 +11,21 @@
     @click.stop="onClickItem"
   >
     <!-- v-if="!flat || (flat && !isSelected)" -->
-    <slot>
-      <button
-        ref="item"
-        @keydown.up.exact="up"
-        @keydown.down.exact="down"
-        :app-option-index="index"
-      >
+    <button
+      ref="item"
+      @keydown.up.exact="up"
+      @keydown.down.exact="down"
+      :app-option-index="index"
+    >
+      <slot>
         <span class="tw-flex-1">{{ label }}</span>
-        <AppIcon
-          v-if="flat && isSelected"
-          :class="$style.icon"
-          name="icons/arrow-top-outline"
-        />
-      </button>
-    </slot>
+      </slot>
+      <AppIcon
+        v-if="flat && isSelected"
+        :class="$style.icon"
+        name="icons/arrow-top-outline"
+      />
+    </button>
   </li>
 </template>
 

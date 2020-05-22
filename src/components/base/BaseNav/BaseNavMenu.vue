@@ -6,6 +6,9 @@
     <li>
       <a>커뮤니티</a>
     </li>
+    <li>
+      <a>고객센터</a>
+    </li>
   </ul>
 </template>
 
@@ -28,7 +31,7 @@ export default {}
       cursor: pointer;
       display: block;
       color: black;
-      font-size: 1rem;
+      font-size: 0.875rem;
       font-weight: $font-weight-medium;
       text-decoration: none;
 

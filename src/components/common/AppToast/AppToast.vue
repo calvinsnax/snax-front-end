@@ -68,9 +68,10 @@ export default {
   font-size: 0.875rem;
   font-weight: $font-weight-medium;
   text-align: center;
-  border-radius: $border-radius-2;
+  border-radius: 5rem;
 
-  background-color: $color-gray-800;
+  // background-color: $color-gray-800;
+  background-color: $color-primary;
   box-shadow: rgba(black, 0.2) 0 4px 20px;
 
   transform: translateX(-50%);

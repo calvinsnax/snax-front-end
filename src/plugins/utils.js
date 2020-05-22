@@ -23,10 +23,11 @@ Vue.use(VueMoment, {
   moment,
 })
 Vue.use(VueProgressBar, {
-  color: '#6441ff',
+  color: '#2957ff',
   failedColor: '#c8161d',
   autoRevert: true,
   inverse: false,
+  thickness: '4px',
 })
 Vue.use(Vue2Filters)
 

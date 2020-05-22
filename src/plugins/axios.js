@@ -36,7 +36,7 @@ instance.interceptors.response.use(
       return (
         error.response &&
         error.response.status === 403 &&
-        error.response.data === 'Expired'
+        error.response.data.error === 'jwt expired'
       )
     }
 

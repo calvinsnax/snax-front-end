@@ -2,15 +2,15 @@
   <div :class="$style.item">
     <div :class="$style.thumbnail">
       <router-link
-        :to="{ name: 'product', params: { id: id } }"
+        :to="{ name: 'product', params: { id: item.id } }"
         :class="$style.thumbnailInner"
       >
-        <img :src="thumbnail" :alt="title" />
+        <img :src="item.thumbnail" :alt="item.name" />
       </router-link>
 
       <div :class="$style.cartCover">
         <router-link
-          :to="{ name: 'product', params: { id: id } }"
+          :to="{ name: 'product', params: { id: item.id } }"
           :class="$style.cartCoverLink"
         ></router-link>
 
@@ -22,19 +22,30 @@
     </div>
 
     <router-link
-      :to="{ name: 'product', params: { id: id } }"
+      :to="{ name: 'product', params: { id: item.id } }"
       :class="$style.itemBody"
     >
-      <div :class="$style.category">{{ category }}</div>
-      <div :class="$style.title">{{ title }}</div>
-      <div :class="$style.desc">{{ desc }}</div>
-      <div :class="$style.price">
-        {{
-          price
-            | currency('원', 0, {
-              symbolOnLeft: false,
-            })
-        }}
+      <div :class="$style.category">{{ item.category }}</div>
+      <div :class="$style.name">{{ item.name }}</div>
+      <div :class="$style.description">{{ item.description }}</div>
+
+      <div>
+        <span v-if="item.discountPrice" :class="$style.discountPrice">
+          {{
+            item.discountPrice
+              | currency('원', 0, {
+                symbolOnLeft: false,
+              })
+          }}
+        </span>
+        <span :class="$style.price">
+          {{
+            (item.price - item.discountPrice)
+              | currency('원', 0, {
+                symbolOnLeft: false,
+              })
+          }}
+        </span>
       </div>
     </router-link>
   </div>
@@ -43,14 +54,7 @@
 <script>
 export default {
   props: {
-    id: String,
-    item: String,
-    category: String,
-    title: String,
-    desc: String,
-    price: Number,
-    discountPrice: Number,
-    thumbnail: String,
+    item: {},
   },
 }
 </script>
@@ -70,7 +74,7 @@ export default {
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 100%;
+    padding-bottom: 58%;
     overflow: hidden;
     border-radius: $border-radius-2;
 
@@ -107,17 +111,23 @@ export default {
   color: $color-gray-600;
   font-size: 0.75rem;
 }
-.title {
+.name {
   font-size: 0.875rem;
   font-weight: $font-weight-bold;
 }
-.desc {
+.description {
   max-width: 100%;
   font-size: 0.875rem;
   color: rgba(black, 0.5);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.discountPrice {
+  color: $color-gray-600;
+  font-size: 0.75rem;
+  text-decoration: line-through;
 }
 .price {
   color: $color-primary;

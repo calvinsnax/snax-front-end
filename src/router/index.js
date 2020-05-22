@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '@/store'
 
-let routeList = ['auth', 'store', 'product']
+let routeList = ['auth', 'user', 'store', 'product', 'cart']
 let routes = []
 
 routeList.forEach(val => {
@@ -34,6 +34,8 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  store.dispatch('auth/getAuth')
+
   if (to.matched.some(record => record.meta.navHidden))
     store.commit('nav/setNavVisible', false)
   else store.commit('nav/setNavVisible', true)

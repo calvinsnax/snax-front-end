@@ -1,15 +1,7 @@
 <template>
   <ul :class="$style.storeList">
-    <li v-for="(item, index) in filteredProducts" :key="index">
-      <StoreListItem
-        :id="item.id"
-        :thumbnail="item.thumbnail"
-        :title="item.title"
-        :desc="item.desc"
-        :category="item.category"
-        :price="item.price"
-        :discountPrice="item.discountPrice"
-      />
+    <li v-for="item in filteredProducts" :key="item.id">
+      <StoreListItem :item="item" />
     </li>
   </ul>
 </template>
@@ -40,7 +32,7 @@ export default {
 .storeList {
   list-style-type: none;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 2rem;
 
   & > li {

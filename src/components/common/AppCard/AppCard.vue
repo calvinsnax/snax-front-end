@@ -1,5 +1,12 @@
 <template>
-  <div :class="[$style.AppCard, overflow && $style.overflow]">
+  <div
+    :class="[
+      $style.AppCard,
+      overflow && $style.overflow,
+      gray && $style.gray,
+      flat && $style.flat,
+    ]"
+  >
     <slot />
   </div>
 </template>
@@ -7,14 +14,15 @@
 <script>
 export default {
   props: {
-    overflow: [Boolean, Text],
+    overflow: [Boolean, String],
+    gray: [Boolean, String],
+    flat: [Boolean, String],
   },
 }
 </script>
 
 <style lang="scss" module scoped>
 .AppCard {
-  // margin-bottom: 26px;
   background-color: white;
   border-radius: $border-radius-3;
   box-shadow: rgba(black, 0.05) 0 4px 16px, rgba(black, 0.05) 0 8px 32px,
@@ -22,6 +30,14 @@ export default {
 
   &.overflow {
     overflow: hidden;
+  }
+
+  &.gray {
+    background-color: $color-gray-200;
+  }
+
+  &.flat {
+    box-shadow: none;
   }
 }
 </style>

@@ -1,10 +1,18 @@
 <template>
-  <a :class="$style.item">
+  <router-link
+    :class="$style.item"
+    :to="{
+      name: 'product',
+      params: {
+        id: itemId,
+      },
+    }"
+  >
     <div :class="$style.thumbnail">
       <img :src="src" alt="" />
     </div>
 
-    <div :class="$style.itemBody">
+    <div :class="[$style.itemBody, nonePadding && $style.nonePadding]">
       <div :class="$style.title">{{ title }}</div>
       <div :class="$style.desc">{{ desc }}</div>
       <div :class="$style.price">
@@ -16,17 +24,19 @@
         }}
       </div>
     </div>
-  </a>
+  </router-link>
 </template>
 
 <script>
 export default {
   props: {
+    itemId: String,
     title: String,
     desc: String,
     price: Number,
     discountPrice: Number,
     src: String,
+    nonePadding: [Boolean, String],
   },
 }
 </script>
@@ -63,6 +73,11 @@ export default {
     border-bottom: 1px solid $color-gray-200;
 
     overflow: hidden;
+
+    &.nonePadding {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
   }
 
   &:last-child .itemBody {

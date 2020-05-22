@@ -1,6 +1,12 @@
 <template>
   <li :style="homeCardWrapStyle">
-    <component :is="componentId" :class="$style.homeCardContainer">
+    <component
+      :is="componentId"
+      :class="$style.homeCardContainer"
+      :to="to"
+      :href="href"
+      :target="target"
+    >
       <AppCard
         :class="$style.homeCard"
         :style="homeCardStyle"
@@ -24,6 +30,8 @@ export default {
     backgroundColor: String,
 
     to: [String, Object],
+    href: String,
+    target: String,
     isDiv: [String, Boolean],
   },
 
@@ -62,6 +70,10 @@ export default {
   height: 100%;
   min-height: 36vw;
   transition: transform 0.5s ease;
+
+  @media (max-width: $medium-w) {
+    min-height: 60vmax;
+  }
 
   &:hover {
     transform: translateY(-0.5rem);

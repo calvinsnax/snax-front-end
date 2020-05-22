@@ -123,6 +123,7 @@
 
 <script>
 import AuthContainer from '@/components/auth/AuthContainer'
+import { mapActions } from 'vuex'
 
 export default {
   components: {
@@ -173,8 +174,16 @@ export default {
   },
 
   methods: {
+    ...mapActions('auth', ['register']),
+
     submit() {
-      this.$toast.show({ message: '로그인 테스트 중입니다.' })
+      const payload = {
+        name: this.name,
+        email: this.email,
+        password: this.password,
+        phone: this.phone,
+      }
+      this.register(payload)
     },
   },
 }

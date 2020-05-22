@@ -16,5 +16,6 @@ export default {}
   // border-bottom: none;
   // border-radius: $border-radius-2 $border-radius-2 0 0;
   border-radius: $border-radius-2;
+  background-color: rgba(white, 0.8);
 }
 </style>

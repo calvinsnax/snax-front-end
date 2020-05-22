@@ -1,5 +1,8 @@
 <template>
-  <label class="app-form-input" :class="{ 'last-child': lastChild }">
+  <label
+    class="app-form-input"
+    :class="{ 'last-child': lastChild, 'app-form-input-overflow': overflow }"
+  >
     <div class="app-form-input-label">
       <span class="label-text">{{ label }}</span>
       <span v-if="error"> ・ </span>
@@ -21,6 +24,10 @@ export default {
     label: String,
     error: String,
     lastChild: [Boolean, String],
+    overflow: {
+      type: [Boolean, String],
+      default: true,
+    },
   },
 }
 </script>
@@ -48,10 +55,14 @@ export default {
     }
   }
 
+  &-overflow {
+    overflow: hidden;
+  }
+
   &:focus-within {
     border: 1px solid black;
     border-radius: $border-radius-2;
-    overflow: hidden;
+    // overflow: hidden;
   }
 
   &-label {
@@ -92,6 +103,16 @@ export default {
   .app-form-input-slot.error {
     input {
       color: $color-danger;
+    }
+  }
+}
+
+.app-form-input-slot {
+  & > .app-select {
+    margin-top: 2rem;
+    background-color: transparent !important;
+    & > button {
+      border: none !important;
     }
   }
 }

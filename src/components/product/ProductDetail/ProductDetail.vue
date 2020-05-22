@@ -1,26 +1,34 @@
 <template>
   <div :class="$style.content">
-    <div class="tw-container tw-mx-auto">
-      <component :is="componentId" />
-    </div>
+    <ProductSection title="제품 소개">
+      <div class="tw-container tw-mx-auto">
+        <div v-html="product.content"></div>
+        <!-- <component :is="componentId" /> -->
+      </div>
+    </ProductSection>
   </div>
 </template>
 
 <script>
-import equeer from './ProductEqueer'
-import eden from './ProductEden'
-import hios from './ProductHios'
-import circulator from './ProductCirculator'
+import { mapState } from 'vuex'
+import ProductSection from '../ProductSection'
+
+// import equeer from './ProductEqueer'
+// import eden from './ProductEden'
+// import hios from './ProductHios'
+// import circulator from './ProductCirculator'
 
 export default {
   components: {
-    equeer,
-    eden,
-    hios,
-    circulator,
+    ProductSection,
+    // equeer,
+    // eden,
+    // hios,
+    // circulator,
   },
 
   computed: {
+    ...mapState('product', ['product']),
     productId() {
       return this.$route.params.id
     },
@@ -36,7 +44,5 @@ export default {
 <style lang="scss" module scoped>
 .content {
   position: relative;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
 }
 </style>

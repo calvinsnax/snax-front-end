@@ -10,18 +10,18 @@
 
         <AppSpacer />
 
-        <!-- <a :class="$style.navIcon" >
-          <i class="el-icon-goods"></i>
-        </a> -->
+        <BaseNavProfile v-if="loggedIn" />
 
-        <router-link :class="$style.login" :to="{ name: 'login' }">
-          <AppIcon name="icons/lock" />
-          <span>로그인</span>
-        </router-link>
+        <div v-else class="tw-flex">
+          <router-link :class="$style.login" :to="{ name: 'login' }">
+            <AppIcon name="icons/lock" />
+            <span>로그인</span>
+          </router-link>
 
-        <router-link :to="{ name: 'register' }">
-          <AppButton color="black">회원가입</AppButton>
-        </router-link>
+          <router-link :to="{ name: 'register' }">
+            <AppButton color="black">회원가입</AppButton>
+          </router-link>
+        </div>
       </div>
     </nav>
   </div>
@@ -30,13 +30,17 @@
 <script>
 import { mapState } from 'vuex'
 import BaseNavMenu from './BaseNavMenu'
+import BaseNavProfile from './BaseNavProfile'
+
 export default {
   components: {
     BaseNavMenu,
+    BaseNavProfile,
   },
 
   computed: {
     ...mapState('nav', ['navVisible']),
+    ...mapState('auth', ['loggedIn']),
   },
 
   data() {
@@ -100,29 +104,29 @@ export default {
   display: flex;
   align-items: center;
   height: 2rem;
-  margin-right: 2.5rem;
+  margin-right: 2.8rem;
 
   img {
     height: 100%;
   }
 }
 
-.navIcon {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 2rem;
-  height: 2rem;
-  margin: 0 1rem;
+// .navIcon {
+//   display: inline-flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 2rem;
+//   height: 2rem;
+//   margin: 0 1rem;
 
-  color: black;
-  text-decoration: none;
-  border-radius: 100%;
+//   color: black;
+//   text-decoration: none;
+//   border-radius: 100%;
 
-  i {
-    font-size: 1.25rem;
-  }
-}
+//   i {
+//     font-size: 1.25rem;
+//   }
+// }
 
 .login {
   cursor: pointer;

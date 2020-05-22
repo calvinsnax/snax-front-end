@@ -12,7 +12,7 @@ export default {}
 .appCardTitle {
   display: flex;
   align-items: center;
-  padding: 42px 52px 31px;
+  padding: 1rem;
   font-size: 24px;
   font-weight: $font-weight-medium;
 }
@@ -20,6 +20,6 @@ export default {}
 
 <style lang="scss">
 .app-card-title + .app-card-body {
-  padding: 0 52px 45px !important;
+  padding: 0 1rem 1rem !important;
 }
 </style>
