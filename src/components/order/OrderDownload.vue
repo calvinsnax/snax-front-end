@@ -4,7 +4,7 @@
       <ul :class="$style.contentList">
         <li v-for="(item, index) in contentList" :key="index">
           <a
-            :href="`${baseUrl}/content/download/${cartId}/${item.filename}`"
+            :href="`${baseUrl}content/download/${cartId}/${item.filename}`"
             target="_blank"
           >
             <div>{{ item.originalName }}</div>
