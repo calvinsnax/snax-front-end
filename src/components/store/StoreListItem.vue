@@ -8,7 +8,7 @@
         <img :src="item.thumbnail" :alt="item.name" />
       </router-link>
 
-      <div :class="$style.cartCover">
+      <!-- <div :class="$style.cartCover">
         <router-link
           :to="{ name: 'product', params: { id: item.id } }"
           :class="$style.cartCoverLink"
@@ -18,7 +18,7 @@
           <AppIcon name="icons/shopping_cart" />
           <span>담기</span>
         </button>
-      </div>
+      </div> -->
     </div>
 
     <router-link

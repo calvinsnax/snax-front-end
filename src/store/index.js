@@ -4,7 +4,16 @@ import Vuex from 'vuex'
 // Modules
 // ───────────────────────────────────
 
-let moduleList = ['auth', 'user', 'nav', 'store', 'product', 'cart', 'order']
+let moduleList = [
+  'auth',
+  'user',
+  'nav',
+  'store',
+  'product',
+  'cart',
+  'order',
+  'content',
+]
 let modules = {}
 
 moduleList.forEach(val => {

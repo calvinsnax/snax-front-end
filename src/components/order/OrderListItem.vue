@@ -13,19 +13,19 @@
       <!-- 옵션 -->
       <div :class="$style.optionList">
         <div :class="$style.option">
-          <span :class="$style.label">라이센스: </span>
+          <span :class="$style.label">라이센스:</span>
           <span>{{ licenseName }}</span>
         </div>
         <div :class="$style.option">
-          <span :class="$style.label">구매일자: </span>
+          <span :class="$style.label">구매일자:</span>
           <span>{{ item.updatedAt | moment('YYYY-MM-DD HH:mm') }}</span>
         </div>
         <div :class="$style.option">
-          <span :class="$style.label">제품상태: </span>
+          <span :class="$style.label">제품상태:</span>
           <span>{{ status }}</span>
         </div>
         <div :class="$style.option">
-          <span :class="$style.label">사이트URL: </span>
+          <span :class="$style.label">사이트URL:</span>
           <span>{{ item.siteUrl || '없음' }}</span>
         </div>
       </div>
@@ -69,8 +69,17 @@
       </div>
     </div>
 
-    <OrderDownload v-model="downloadDialogVisible" />
-    <OrderSiteUrl v-model="siteUrlDialogVisible" :item="item" />
+    <OrderDownload
+      v-if="downloadDialogVisible"
+      v-model="downloadDialogVisible"
+      :cartId="item._id"
+      :productId="item.productId._id"
+    />
+    <OrderSiteUrl
+      v-if="siteUrlDialogVisible"
+      v-model="siteUrlDialogVisible"
+      :item="item"
+    />
   </li>
 </template>
 
