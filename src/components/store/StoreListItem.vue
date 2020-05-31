@@ -148,7 +148,6 @@ export default {
   height: 100%;
   padding: 1rem;
   background-color: rgba(black, 0.6);
-  backdrop-filter: saturate(180%) blur(2px);
 
   opacity: 0;
   transition: 0.5s;
@@ -175,7 +174,6 @@ export default {
   border: none;
 
   background-color: rgba(white, 0.9);
-  backdrop-filter: saturate(180%) blur(20px);
   border-radius: $border-radius-1;
   transition: 0.3s;
 

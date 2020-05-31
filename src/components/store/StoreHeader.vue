@@ -2,7 +2,7 @@
   <div :class="$style.header">
     <h1 :class="$style.title">둘러보세요</h1>
     <p :class="$style.desc">
-      층분히 멋진 당신을 위해, 충분히 멋진 것들만 준비했어요.
+      충분히 멋진 당신을 위해, 충분히 멋진 것들만 준비했어요.
     </p>
 
     <div :class="$style.category">

@@ -9,6 +9,7 @@
       rounded && $style.rounded,
       icon && $style.icon,
       loading && $style.isLoading,
+      disabled && $style.disabled,
     ]"
     @click="click"
   >
@@ -41,6 +42,7 @@ export default {
     rounded: [Boolean, String],
     icon: [Boolean, String],
     loading: [Boolean, String],
+    disabled: [Boolean, String],
   },
 
   methods: {
@@ -78,6 +80,10 @@ export default {
 
   &.isLoading {
     overflow: hidden;
+  }
+
+  &.disabled {
+    opacity: 0.5;
   }
 
   i {

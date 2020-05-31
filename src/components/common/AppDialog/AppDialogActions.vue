@@ -11,7 +11,9 @@ export default {}
 <style lang="scss" module scoped>
 .actions {
   display: flex;
-  padding: 0 24px 18px;
+  justify-content: flex-end;
+  padding: 1rem 1.25rem;
+  padding-top: 0;
 
   button {
     margin-right: 0.6rem;

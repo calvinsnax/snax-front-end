@@ -10,6 +10,12 @@
         @click.self.stop="$emit('input', false)"
       >
         <div :class="$style.appDialog">
+          <AppDialogTitle>
+            <div>{{ title }}</div>
+            <AppSpacer />
+            <AppDialogClose @click="$emit('input', false)" />
+          </AppDialogTitle>
+
           <slot />
         </div>
       </div>
@@ -18,12 +24,21 @@
 </template>
 
 <script>
+import AppDialogTitle from './AppDialogTitle'
+import AppDialogClose from './AppDialogClose'
+
 export default {
+  components: {
+    AppDialogTitle,
+    AppDialogClose,
+  },
+
   props: {
     value: {
       type: Boolean,
       default: true,
     },
+    title: String,
   },
 }
 </script>
@@ -41,9 +56,9 @@ export default {
 
   &:global(.v-enter-active),
   &:global(.v-leave-active) {
-    transition: 250ms;
+    // transition: 250ms;
     .appDialog {
-      transition: 250ms ease;
+      // transition: 250ms ease;
     }
   }
   &:global(.v-enter),
@@ -51,7 +66,7 @@ export default {
     opacity: 0;
 
     .appDialog {
-      transform: scale(0.5);
+      // transform: scale(0.5);
     }
   }
 }
@@ -60,12 +75,13 @@ export default {
   display: flex;
   max-width: 572px;
   height: 100%;
+  padding: 1rem;
   margin: 0 auto;
   align-items: center;
 
-  @media (max-width: $medium-w) {
-    max-width: 100%;
-  }
+  // @media (max-width: $medium-w) {
+  //   max-width: 100%;
+  // }
 }
 
 .appDialog {
@@ -74,12 +90,12 @@ export default {
   background-color: white;
   border-radius: 6px;
 
-  @media (max-width: $medium-w) {
-    min-height: 100%;
-    border-radius: 0;
-    overflow: auto;
+  // @media (max-width: $medium-w) {
+  //   min-height: 100%;
+  //   border-radius: 0;
+  //   overflow: auto;
 
-    @include custom-scroll;
-  }
+  //   @include custom-scroll;
+  // }
 }
 </style>

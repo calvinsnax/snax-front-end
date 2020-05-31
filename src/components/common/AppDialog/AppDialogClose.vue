@@ -1,6 +1,6 @@
 <template>
   <button :class="$style.button" @click="click">
-    <AppIcon name="icons/close-outline" />
+    <i class="el-icon-close"></i>
   </button>
 </template>
 

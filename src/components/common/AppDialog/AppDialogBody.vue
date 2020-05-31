@@ -10,6 +10,6 @@ export default {}
 
 <style lang="scss" module scoped>
 .appDialogBody {
-  padding: 20px 24px 16px;
+  padding: 1rem 1.25rem;
 }
 </style>

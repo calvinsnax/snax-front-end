@@ -1,7 +1,9 @@
 <template>
-  <ul :class="[$style.tab, border && $style.border]">
-    <slot />
-  </ul>
+  <div :class="$style.tab">
+    <ul>
+      <slot />
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -14,15 +16,13 @@ export default {
 
 <style lang="scss" module scoped>
 .tab {
-  position: relative;
-  display: flex;
-  list-style-type: none;
-  padding: 0;
-  z-index: 1;
-  overflow-x: auto;
-}
+  text-align: center;
 
-.border {
-  border-bottom: 1px solid $color-border-lighter;
+  & > ul {
+    display: inline-flex;
+    align-items: center;
+    border-radius: $border-radius-2;
+    background-color: $color-gray-200;
+  }
 }
 </style>

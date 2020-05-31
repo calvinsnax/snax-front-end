@@ -202,6 +202,8 @@ export default {
   // select 텍스트가 들어갈 곳
   .label {
     flex: 1;
+    display: flex;
+    align-items: center;
     width: 100%;
     height: 100%;
     padding: 0 13px;

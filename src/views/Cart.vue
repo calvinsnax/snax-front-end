@@ -21,7 +21,7 @@
               <div :class="$style.infoItem">
                 <div :class="$style.label">할인금액</div>
                 <div :class="$style.body">
-                  -{{ getTotalDiscountPrice | currency('', 0) }}원
+                  {{ (getTotalDiscountPrice * -1) | currency('', 0) }}원
                 </div>
               </div>
 

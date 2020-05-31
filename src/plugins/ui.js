@@ -51,9 +51,6 @@ Vue.component('AppTab', () => import('@/components/common/AppTab/AppTab'))
 Vue.component('AppTabItem', () =>
   import('@/components/common/AppTab/AppTabItem'),
 )
-Vue.component('AppTabContent', () =>
-  import('@/components/common/AppTab/AppTabContent'),
-)
 
 Vue.component('AppTable', () => import('@/components/common/AppTable'))
 
