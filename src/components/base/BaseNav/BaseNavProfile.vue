@@ -1,8 +1,10 @@
 <template>
   <div :class="$style.profile">
-    <BaseNavItem v-if="user.role === 'admin'">
-      관리자
-    </BaseNavItem>
+    <BaseNavItem
+      v-if="user.role === 'admin'"
+      href="https://admin.calvinsnax.com"
+      >관리자</BaseNavItem
+    >
     <BaseNavItem :to="{ name: 'cart' }">
       <i class="el-icon-goods"></i>
     </BaseNavItem>
