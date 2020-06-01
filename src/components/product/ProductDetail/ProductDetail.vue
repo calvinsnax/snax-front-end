@@ -2,8 +2,11 @@
   <div :class="$style.content">
     <ProductSection title="제품 소개">
       <div class="tw-container tw-mx-auto">
-        <div v-html="product.content"></div>
-        <!-- <component :is="componentId" /> -->
+        <AppViewer
+          v-if="!product.isCustomContent || !componentId"
+          :value="product.content"
+        />
+        <component v-else :is="componentId" />
       </div>
     </ProductSection>
   </div>
@@ -16,7 +19,7 @@ import ProductSection from '../ProductSection'
 // import equeer from './ProductEqueer'
 // import eden from './ProductEden'
 // import hios from './ProductHios'
-// import circulator from './ProductCirculator'
+import circulator from './ProductCirculator'
 
 export default {
   components: {
@@ -24,7 +27,7 @@ export default {
     // equeer,
     // eden,
     // hios,
-    // circulator,
+    circulator,
   },
 
   computed: {
@@ -34,7 +37,7 @@ export default {
     },
 
     componentId() {
-      if (!this.productId) return 'equeer'
+      if (!this.productId) return false
       return this.productId
     },
   },

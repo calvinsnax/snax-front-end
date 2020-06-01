@@ -10,7 +10,7 @@ function addStyleResource(rule) {
 }
 
 module.exports = {
-  transpileDependencies: ['vuetify'],
+  // transpileDependencies: ['vuetify'],
 
   chainWebpack: config => {
     // Vue Resource loader

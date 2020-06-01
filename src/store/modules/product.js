@@ -38,6 +38,7 @@ export default {
 
       commit('setProduct', data)
       commit('setLicense', '')
+      return
     },
   },
 

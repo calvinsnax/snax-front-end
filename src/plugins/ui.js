@@ -108,3 +108,6 @@ Vue.component('AppFormSubmit', () =>
 Vue.component('AppCheckbox', () =>
   import('@/components/common/AppCheckbox/AppCheckbox'),
 )
+
+// Viewer
+Vue.component('AppViewer', () => import('@/components/common/AppViewer'))

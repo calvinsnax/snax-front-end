@@ -3,8 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
-import vuetify from './plugins/vuetify'
-import '@babel/polyfill'
+// import vuetify from './plugins/vuetify'
+// import '@babel/polyfill'
 // import 'roboto-fontface/css/roboto/roboto-fontface.css'
 // import '@mdi/font/css/materialdesignicons.css'
 import './plugins/ui'
@@ -18,6 +18,6 @@ Vue.config.productionTip = false
 export default new Vue({
   router,
   store,
-  vuetify,
+  // vuetify,
   render: h => h(App),
 }).$mount('#app')

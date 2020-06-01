@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.page">
     <ProductHeader />
-    <ProductDetail />
+    <ProductDetail v-if="!loading" />
     <ProductPackage />
   </div>
 </template>
@@ -19,8 +19,14 @@ export default {
     ProductDetail,
   },
 
-  created() {
-    this.fetchData(this.$route.params.id)
+  data: () => ({
+    loading: true,
+  }),
+
+  async created() {
+    this.loading = true
+    await this.fetchData(this.$route.params.id)
+    this.loading = false
   },
 
   methods: {
