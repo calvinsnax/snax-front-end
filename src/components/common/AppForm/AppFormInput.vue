@@ -89,6 +89,7 @@ export default {
     padding-top: 2rem;
     padding-left: 1rem;
     padding-bottom: 0.75rem;
+    border-radius: $border-radius-2;
 
     color: black;
     font-size: 1rem;

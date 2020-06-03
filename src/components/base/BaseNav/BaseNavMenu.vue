@@ -4,10 +4,10 @@
       <router-link :to="{ name: 'store' }">스토어</router-link>
     </li>
     <li>
-      <a>커뮤니티</a>
+      <a href="https://calvinsnax.com/membership">커뮤니티</a>
     </li>
     <li>
-      <a>고객센터</a>
+      <a href="https://calvinsnax.com/faq">고객센터</a>
     </li>
   </ul>
 </template>
