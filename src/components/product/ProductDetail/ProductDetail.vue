@@ -19,7 +19,7 @@ import ProductSection from '../ProductSection'
 // import equeer from './ProductEqueer'
 // import eden from './ProductEden'
 // import hios from './ProductHios'
-import circulator from './ProductCirculator'
+// import circulator from './ProductCirculator'
 
 export default {
   components: {
@@ -27,7 +27,7 @@ export default {
     // equeer,
     // eden,
     // hios,
-    circulator,
+    // circulator,
   },
 
   computed: {

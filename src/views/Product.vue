@@ -2,21 +2,21 @@
   <div :class="$style.page">
     <ProductHeader />
     <ProductDetail v-if="!loading" />
-    <ProductPackage />
+    <!-- <ProductPackage /> -->
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
 import ProductHeader from '@/components/product/ProductHeader'
-import ProductPackage from '@/components/product/ProductPackage'
 import ProductDetail from '@/components/product/ProductDetail/ProductDetail'
+// import ProductPackage from '@/components/product/ProductPackage'
 
 export default {
   components: {
     ProductHeader,
-    ProductPackage,
     ProductDetail,
+    // ProductPackage,
   },
 
   data: () => ({

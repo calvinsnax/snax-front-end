@@ -50,7 +50,7 @@
           </HomeCardBody>
         </HomeCard>
 
-        <HomeCard
+        <!-- <HomeCard
           overflow
           :span="2"
           :to="{ name: 'product', params: { id: 'eden' } }"
@@ -64,6 +64,27 @@
             <AppSpacer />
 
             <HomeCardDesc>기본기를 갖춘 가벼운 게시판 스킨.</HomeCardDesc>
+          </HomeCardBody>
+        </HomeCard> -->
+
+        <HomeCard
+          overflow
+          :span="2"
+          :to="{ name: 'product', params: { id: 'slow' } }"
+        >
+          <HomeCardMedia src="/img/thumb_slow.jpg" absolute />
+
+          <HomeCardBody expand lighten>
+            <HomeCardSubtitle>Slow 테마 패키지</HomeCardSubtitle>
+            <HomeCardTitle
+              >정교하고 트랜디한 커뮤니티를 구성하세요</HomeCardTitle
+            >
+
+            <AppSpacer />
+
+            <HomeCardDesc
+              >다크 테마를 지원하는 커뮤니티용 테마 패키지</HomeCardDesc
+            >
           </HomeCardBody>
         </HomeCard>
 

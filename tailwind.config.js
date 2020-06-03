@@ -1,4 +1,5 @@
 module.exports = {
+  purge: ['./src/**/*.html', './src/**/*.vue', './src/**/*.jsx'],
   prefix: 'tw-',
   important: true, // 모든 tailwind css에 important를 추가합니다.
   theme: {

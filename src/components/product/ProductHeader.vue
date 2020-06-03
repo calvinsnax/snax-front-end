@@ -76,16 +76,16 @@ export default {
   },
 
   methods: {
-    ...mapActions('cart', ['addToCart']),
+    ...mapActions('cart', ['addToCart', 'fetchData']),
 
     async onClickCart() {
       if (!this.loggedIn) {
-        this.$toast.show({ message: '로그인이 필요합니다.' })
+        this.$toast.danger({ message: '로그인이 필요합니다.' })
         return
       }
 
       if (!this.license) {
-        this.$toast.show({ message: '라이센스를 선택해주세요.' })
+        this.$toast.danger({ message: '라이센스를 선택해주세요.' })
         return
       }
 
@@ -93,6 +93,7 @@ export default {
         productId: this.product._id,
         license: this.license,
       })
+      await this.fetchData({}) // 카트 정보 갱신
       this.$toast.show({ message: '장바구니에 담겼습니다.' })
     },
   },

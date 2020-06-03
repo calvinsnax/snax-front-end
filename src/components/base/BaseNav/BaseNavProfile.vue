@@ -3,9 +3,10 @@
     <BaseNavItem
       v-if="user.role === 'admin'"
       href="https://admin.calvinsnax.com"
+      target="_blank"
       >관리자</BaseNavItem
     >
-    <BaseNavItem :to="{ name: 'cart' }">
+    <BaseNavItem :to="{ name: 'cart' }" :count="cartList.length">
       <i class="el-icon-goods"></i>
     </BaseNavItem>
     <BaseNavItem :to="{ name: 'profile' }">
@@ -25,6 +26,7 @@ export default {
 
   computed: {
     ...mapState('auth', ['user']),
+    ...mapState('cart', ['cartList']),
   },
 }
 </script>

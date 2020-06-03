@@ -1,6 +1,13 @@
 <template>
-  <component :is="componentId" :to="to" :exact="exact" class="base-nav-item">
-    <slot />
+  <component
+    :is="componentId"
+    :to="to"
+    :exact="exact"
+    class="base-nav-item"
+    :class="{ 'is-count-mode': count }"
+  >
+    <slot v-if="!count" />
+    <div v-else class="base-nav-item-count">{{ count }}</div>
   </component>
 </template>
 
@@ -9,6 +16,7 @@ export default {
   props: {
     to: {},
     exact: [Boolean, String],
+    count: Number,
   },
 
   computed: {
@@ -27,7 +35,7 @@ export default {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem;
+  padding: 0 0.25rem;
   margin-left: 1rem;
 
   color: black;
@@ -36,6 +44,20 @@ export default {
 
   i {
     font-size: 1.25rem;
+  }
+
+  & > .base-nav-item-count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 1rem;
+
+    color: white;
+    font-size: 0.875rem;
+    background-color: $color-primary;
+    border-radius: 9999px;
   }
 }
 </style>
