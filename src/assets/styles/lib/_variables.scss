@@ -148,6 +148,10 @@ $margin-7: 60px !default;
 // base-nav
 $base-nav-height: 4.25rem !default;
 
+// base-nav
+$base-bottom-nav-height: 3.5rem !default;
+$backdrop-filter: saturate(180%) blur(20px);
+
 // CSS variable export
 // ─────────────────────────────────────────────
 
@@ -161,6 +165,17 @@ $base-nav-height: 4.25rem !default;
   --color-warning: #{$color-warning};
   --color-danger: #{$color-danger};
   --color-info: #{$color-info};
+
+  // grayscale
+  --color-gray-100: #{$color-gray-100};
+  --color-gray-200: #{$color-gray-200};
+  --color-gray-300: #{$color-gray-300};
+  --color-gray-400: #{$color-gray-400};
+  --color-gray-500: #{$color-gray-500};
+  --color-gray-600: #{$color-gray-600};
+  --color-gray-700: #{$color-gray-700};
+  --color-gray-800: #{$color-gray-800};
+  --color-gray-900: #{$color-gray-900};
 
   // Text
   --color-text-primary: #{$color-text-primary};

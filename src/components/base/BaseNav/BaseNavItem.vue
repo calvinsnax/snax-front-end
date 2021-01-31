@@ -4,7 +4,7 @@
     :to="to"
     :exact="exact"
     class="base-nav-item"
-    :class="{ 'is-count-mode': count }"
+    :class="[{ 'is-count-mode': count }, { 'is--large': large }]"
   >
     <slot v-if="!count" />
     <div v-else class="base-nav-item-count">{{ count }}</div>
@@ -17,6 +17,7 @@ export default {
     to: {},
     exact: [Boolean, String],
     count: Number,
+    large: [Boolean, String],
   },
 
   computed: {
@@ -42,8 +43,22 @@ export default {
   text-decoration: none;
   border-radius: 100%;
 
-  i {
+  i,
+  svg,
+  ion-icon {
+    width: 1.25rem;
+    height: 1.25rem;
     font-size: 1.25rem;
+  }
+
+  &.is--large {
+    i,
+    svg,
+    ion-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      font-size: 1.5rem;
+    }
   }
 
   & > .base-nav-item-count {

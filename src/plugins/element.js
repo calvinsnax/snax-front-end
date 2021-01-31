@@ -12,6 +12,7 @@ import {
   Checkbox,
   Row,
   Col,
+  MessageBox,
 } from 'element-ui'
 import lang from 'element-ui/lib/locale/lang/ko'
 import locale from 'element-ui/lib/locale'
@@ -30,3 +31,8 @@ Vue.use(Checkbox)
 Vue.use(CheckboxGroup)
 Vue.use(Row)
 Vue.use(Col)
+
+Vue.prototype.$msgbox = MessageBox
+Vue.prototype.$alert = MessageBox.alert
+Vue.prototype.$confirm = MessageBox.confirm
+Vue.prototype.$prompt = MessageBox.prompt

@@ -3,12 +3,12 @@
     <div class="tw-container tw-mx-auto">
       <h1 :class="$style.title">장바구니</h1>
 
-      <el-row :gutter="20">
-        <el-col :span="16">
+      <div :class="$style.container">
+        <div :class="$style.main">
           <CartList />
-        </el-col>
+        </div>
 
-        <el-col :span="8">
+        <div :class="$style.aside">
           <AppCard gray flat>
             <AppCardBody padding="2rem">
               <div :class="$style.infoItem">
@@ -34,15 +34,17 @@
 
               <hr />
 
+              <CartForm v-model="orderInfo" />
+
               <div class="tw-text-center">
-                <AppButton color="black" @click="purchaseRequest"
+                <AppButton color="black" @click="onClickBuy"
                   >구매하기</AppButton
                 >
               </div>
             </AppCardBody>
           </AppCard>
-        </el-col>
-      </el-row>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -50,10 +52,13 @@
 <script>
 import { mapActions, mapState, mapGetters } from 'vuex'
 import CartList from '@/components/cart/CartList'
+import CartForm from '@/components/cart/CartForm'
+import _cloneDeep from 'lodash/cloneDeep'
 
 export default {
   components: {
     CartList,
+    CartForm,
   },
 
   computed: {
@@ -69,8 +74,37 @@ export default {
     this.fetchData()
   },
 
+  data() {
+    return {
+      orderInfo: {
+        name: '',
+      },
+    }
+  },
+
   methods: {
     ...mapActions('cart', ['fetchData', 'purchaseRequest']),
+
+    async onClickBuy() {
+      const copiedTotalAmount = _cloneDeep(this.getTotalAmount)
+      const result = await this.purchaseRequest(this.orderInfo)
+      if (!result) return
+
+      this.$alert(
+        `
+        은행: 카카오뱅크
+        예금주: 윤제제
+        계좌번호: 3333-07-9792272
+      `,
+        `주문이 완료되었습니다. 아래 계좌 정보로 최종 결제 금액(${copiedTotalAmount}원)을 입금해주세요.`,
+        {
+          confirmButtonText: '확인',
+          callback: () => {
+            this.$router.push({ name: 'profile-orders' })
+          },
+        },
+      )
+    },
   },
 }
 </script>
@@ -107,6 +141,33 @@ export default {
     color: black;
     font-size: 1rem;
     margin-bottom: 1rem;
+  }
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+
+  .main {
+    max-width: 70%;
+    flex-basis: 70%;
+    padding-right: 2rem;
+  }
+
+  .aside {
+    max-width: 30%;
+    flex-basis: 30%;
+  }
+
+  @media (max-width: $medium-w) {
+    display: block;
+
+    .main,
+    .aside {
+      max-width: 100%;
+      flex-basis: 100%;
+      padding-right: 0;
+    }
   }
 }
 </style>

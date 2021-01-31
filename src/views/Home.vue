@@ -4,19 +4,25 @@
 
     <div class="tw-container tw-mx-auto" :class="$style.homeContainer">
       <ul :class="$style.grid">
-        <HomeCard :span="2" overflow background-color="#F0F0F0">
-          <HomeCardMedia src="/img/new_snax_art@2x.jpg" absolute />
+        <HomeCard
+          overflow
+          :span="2"
+          :to="{ name: 'product', params: { id: 'slow' } }"
+        >
+          <HomeCardMedia src="/img/thumb_slow.png" absolute />
 
-          <HomeCardBody lighten>
-            <HomeCardSubtitle>안녕, 세상</HomeCardSubtitle>
-            <HomeCardTitle>SNΛX STORE 리뉴얼</HomeCardTitle>
+          <HomeCardBody expand lighten>
+            <HomeCardSubtitle>Slow 테마 패키지</HomeCardSubtitle>
+            <HomeCardTitle
+              >정교하고 트랜디한 커뮤니티를 구성하세요</HomeCardTitle
+            >
+
+            <AppSpacer />
+
+            <HomeCardDesc
+              >다크 테마를 지원하는 커뮤니티용 테마 패키지</HomeCardDesc
+            >
           </HomeCardBody>
-
-          <AppSpacer />
-
-          <HomeCardBody lighten
-            >새롭게 리뉴얼된 SNΛX STORE를 만나보세요.</HomeCardBody
-          >
         </HomeCard>
 
         <HomeCard overflow href="https://calvinsnax.com/" target="_blank">
@@ -36,13 +42,13 @@
           </HomeCardBody>
         </HomeCard>
 
-        <HomeCard overflow :to="{ name: 'product', params: { id: 'equeer' } }">
-          <HomeCardMedia src="/img/thumb_equeer.jpg" />
+        <HomeCard overflow :to="{ name: 'product', params: { id: 'alice' } }">
+          <HomeCardMedia src="/img/thumb_alice.jpg" />
           <HomeCardBody dense>
             <HomeProductItem
-              item-id="equeer"
-              src="/img/thumb_equeer.jpg"
-              title="이퀴어 테마 패키지"
+              item-id="aice"
+              src="/img/thumb_alice.jpg"
+              title="ALice"
               desc="커뮤니티 사이트를 위한 최적의 솔루션"
               :price="40000"
               none-padding
@@ -50,32 +56,15 @@
           </HomeCardBody>
         </HomeCard>
 
-        <!-- <HomeCard
-          overflow
-          :span="2"
-          :to="{ name: 'product', params: { id: 'eden' } }"
-        >
-          <HomeCardMedia src="/img/thumb_eden.jpg" absolute />
-
-          <HomeCardBody expand lighten>
-            <HomeCardSubtitle>EDEN BOARD SKIN</HomeCardSubtitle>
-            <HomeCardTitle>에덴 게시판 스킨 30% 할인</HomeCardTitle>
-
-            <AppSpacer />
-
-            <HomeCardDesc>기본기를 갖춘 가벼운 게시판 스킨.</HomeCardDesc>
-          </HomeCardBody>
-        </HomeCard> -->
-
         <HomeCard
           overflow
           :span="2"
-          :to="{ name: 'product', params: { id: 'slow' } }"
+          :to="{ name: 'product', params: { id: 'hsahtag' } }"
         >
-          <HomeCardMedia src="/img/thumb_slow.jpg" absolute />
+          <HomeCardMedia src="/img/thumb_hashtag.png" absolute />
 
           <HomeCardBody expand lighten>
-            <HomeCardSubtitle>Slow 테마 패키지</HomeCardSubtitle>
+            <HomeCardSubtitle>Alice 게시판 스킨</HomeCardSubtitle>
             <HomeCardTitle
               >정교하고 트랜디한 커뮤니티를 구성하세요</HomeCardTitle
             >
@@ -88,7 +77,7 @@
           </HomeCardBody>
         </HomeCard>
 
-        <HomeCard
+        <!-- <HomeCard
           overflow
           :span="2"
           :to="{ name: 'product', params: { id: 'circulator' } }"
@@ -140,7 +129,7 @@
               :price="40000"
             />
           </HomeCardBody>
-        </HomeCard>
+        </HomeCard> -->
       </ul>
     </div>
   </div>

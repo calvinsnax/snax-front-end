@@ -13,24 +13,29 @@
       <!-- 옵션 -->
       <div :class="$style.optionList">
         <div :class="$style.option">
-          <span :class="$style.label">라이센스:</span>
+          <span :class="$style.label">라이센스: </span>
           <span>{{ licenseName }}</span>
         </div>
         <div :class="$style.option">
-          <span :class="$style.label">구매일자:</span>
+          <span :class="$style.label">구매일자: </span>
           <span>{{ item.updatedAt | moment('YYYY-MM-DD HH:mm') }}</span>
         </div>
-        <div :class="$style.option">
-          <span :class="$style.label">제품상태:</span>
+        <div :class="[$style.option, { 'tw-text-danger': !confirmed }]">
+          <span :class="$style.label">제품상태: </span>
           <span>{{ status }}</span>
         </div>
         <div :class="$style.option">
-          <span :class="$style.label">사이트URL:</span>
+          <span :class="$style.label">사이트URL: </span>
           <span>{{ item.siteUrl || '없음' }}</span>
+        </div>
+        <div v-if="!confirmed" :class="$style.option">
+          <span :class="$style.label">입금자명: </span>
+          <span>{{ item.orderInfo.name || '없음' }}</span>
         </div>
       </div>
 
-      <div class="tw-flex">
+      <!-- 승인 후 상태 -->
+      <div v-if="confirmed" class="tw-flex">
         <!-- 다운로드 버튼 -->
         <AppButton
           v-if="downloadEnabled === 1"
@@ -61,8 +66,14 @@
         >
       </div>
 
+      <div v-else class="tw-flex">
+        <AppButton color="gray" @click="onClickOrderCancel"
+          >주문 철회</AppButton
+        >
+      </div>
+
       <div
-        v-if="downloadEnabled === 2"
+        v-if="confirmed && downloadEnabled === 2"
         class="tw-pt-2 tw-text-danger tw-text-xs"
       >
         사이트URL(도메인)을 입력해야 다운로드할 수 있습니다.
@@ -84,6 +95,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import OrderDownload from './OrderDownload'
 import OrderSiteUrl from './OrderSiteUrl'
 
@@ -118,6 +130,7 @@ export default {
 
     status() {
       const statusName = {
+        '-1': '승인 대기 중',
         1: '구매 완료',
         2: '다운로드된 상품',
         20: '환불 요청중인 상품',
@@ -133,12 +146,48 @@ export default {
       if (!this.item.siteUrl) return 2
       return 3
     },
+
+    confirmed() {
+      if (this.item.status !== -1) return true
+      return false
+    },
   },
 
   methods: {
+    ...mapActions('order', {
+      orderFetch: 'fetchData',
+    }),
+    ...mapActions('cart', {
+      cartFetch: 'fetchData',
+    }),
+
     onClickSiteUrl() {
       console.log('siteUrl')
       this.siteUrlDialogVisible = true
+    },
+
+    onClickOrderCancel() {
+      this.$confirm(
+        '주문을 철회하면 되돌릴 수 없습니다.',
+        '정말로 주문을 철회하시겠습니까?',
+        {
+          confirmButtonText: '예',
+          cancelButtonText: '아니오',
+          type: 'warning',
+        },
+      )
+        .then(async () => {
+          const result = await this.$http.patch('/order/cancel', {
+            cartId: this.item._id,
+          })
+
+          if (!result) return
+
+          this.orderFetch()
+          this.cartFetch()
+          this.$toast.show({ message: '주문이 철회되었습니다.' })
+        })
+        .catch(() => {})
     },
   },
 }

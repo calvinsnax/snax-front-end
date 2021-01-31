@@ -6,7 +6,7 @@
           <img src="@/assets/images/logo.svg" alt="SNAX" />
         </router-link>
 
-        <BaseNavMenu />
+        <BaseNavMenu class="tw-hidden md:tw-flex" />
 
         <AppSpacer />
 
@@ -46,6 +46,7 @@ export default {
   data() {
     return {
       scrolled: false,
+      mobileMenuVisible: false,
     }
   },
 

@@ -30,9 +30,12 @@
       <div :class="$style.description">{{ item.description }}</div>
 
       <div>
-        <span v-if="item.discountPrice" :class="$style.discountPrice">
+        <span
+          v-if="item.discountPrice && item.discountPrice !== item.price"
+          :class="$style.discountPrice"
+        >
           {{
-            item.discountPrice
+            item.price
               | currency('원', 0, {
                 symbolOnLeft: false,
               })

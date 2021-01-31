@@ -69,10 +69,15 @@ export default {
   flex-direction: column;
   height: 100%;
   min-height: 36vw;
+  max-height: 29.625rem;
   transition: transform 0.5s ease;
 
   @media (max-width: $medium-w) {
     min-height: 60vmax;
+  }
+
+  @media (min-width: $x-large-w) {
+    min-height: 29.625rem;
   }
 
   &:hover {

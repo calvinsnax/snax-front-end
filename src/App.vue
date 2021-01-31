@@ -8,6 +8,7 @@
     </BaseContent>
 
     <BaseFooter />
+    <BaseBottomNav />
   </div>
 </template>
 
@@ -15,6 +16,7 @@
 import BaseNav from '@/components/base/BaseNav/BaseNav'
 import BaseContent from '@/components/base/BaseContent'
 import BaseFooter from '@/components/base/BaseFooter'
+import BaseBottomNav from '@/components/base/BaseBottomNav/BaseBottomNav'
 
 export default {
   name: 'app',
@@ -22,6 +24,7 @@ export default {
   components: {
     BaseNav,
     BaseContent,
+    BaseBottomNav,
     BaseFooter,
   },
 }

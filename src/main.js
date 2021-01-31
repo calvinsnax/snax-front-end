@@ -14,6 +14,7 @@ import './plugins/vee-validate.js'
 import './assets/styles/main.scss'
 
 Vue.config.productionTip = false
+Vue.config.ignoredElements = [/^ion-/]
 
 export default new Vue({
   router,

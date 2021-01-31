@@ -44,10 +44,19 @@ export default {
     list-style-type: none;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     margin-bottom: 1rem;
+
+    @media (max-width: $medium-w) {
+      /* display: block; */
+    }
 
     & > li {
       margin-right: 1rem;
+
+      @media (max-width: $medium-w) {
+        margin-bottom: 1rem;
+      }
 
       & > a {
         cursor: pointer;

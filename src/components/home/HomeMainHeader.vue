@@ -39,7 +39,7 @@ export default {}
   .headerBg {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 3rem;
 
     display: flex;
 
