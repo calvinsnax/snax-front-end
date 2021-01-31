@@ -1,13 +1,13 @@
 <template>
   <div>
     <AppForm>
-      <AppFormInput label="구매자 성함" last-child>
+      <AppFormInput label="입금자명" last-child>
         <input type="name" name="name" v-model="formData.name" placeholder="" />
       </AppFormInput>
     </AppForm>
 
     <div :class="$style.cartFormText">
-      입금하신 분의 예금주명이 구매자 성함과 동일해야 합니다.
+      입금하신 분의 예금주명이 입금자명과 동일해야 합니다.
     </div>
   </div>
 </template>

@@ -36,6 +36,14 @@
 
               <CartForm v-model="orderInfo" />
 
+              <hr />
+
+              <div :class="$style.payInfo">
+                <div :class="$style.payInfoTitle">계좌 정보</div>
+                <div :class="$style.payInfoValue">카카오뱅크 - 윤제제</div>
+                <div :class="$style.payInfoValue">3333-07-9792272</div>
+              </div>
+
               <div class="tw-text-center">
                 <AppButton color="black" @click="onClickBuy"
                   >구매하기</AppButton
@@ -168,6 +176,19 @@ export default {
       flex-basis: 100%;
       padding-right: 0;
     }
+  }
+}
+
+.payInfo {
+  margin-bottom: 2rem;
+
+  .payInfoTitle {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .payInfoValue {
+    color: $color-gray-700;
+    font-size: 0.875rem;
   }
 }
 </style>
