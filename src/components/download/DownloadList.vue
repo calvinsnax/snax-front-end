@@ -2,7 +2,7 @@
   <div>
     <ul v-if="downloads.length > 0" :class="$style.list">
       <DownloadListItem
-        v-for="(item, index) in downloads"
+        v-for="(item, index) in downloadList"
         :key="index"
         :index="index"
         :item="item"
@@ -31,6 +31,14 @@ export default {
 
   computed: {
     ...mapState('download', ['downloads']),
+
+    downloadList() {
+      return this.downloads.map(item => {
+        // 결제 완료 또는 구매 확정 상태가 아닐 경우 표시하지 않음
+        if (item.orderId.status !== (1 && 2)) return
+        return item
+      })
+    },
   },
 }
 </script>

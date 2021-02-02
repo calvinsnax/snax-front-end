@@ -1,5 +1,5 @@
 <template>
-  <li :class="$style.item">
+  <li :class="$style.item" v-if="item">
     <router-link
       :to="{ name: 'product', params: { id: item.productId.id } }"
       :class="$style.thumbnail"

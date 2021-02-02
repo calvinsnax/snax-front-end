@@ -41,7 +41,7 @@
           >주문 철회</AppButton
         >
         <AppButton
-          v-if="item.status !== 2"
+          v-if="item.status === 1"
           color="primary"
           @click="onClickOrderConfirm"
           >구매 확정</AppButton
@@ -81,7 +81,7 @@ export default {
 
     confirmed() {
       if (this.item.status !== 2) return false
-      return false
+      return true
     },
   },
 
