@@ -35,7 +35,9 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   store.dispatch('auth/getAuth')
-  store.dispatch('cart/fetchData')
+  if (store.state.auth.loggedIn) {
+    store.dispatch('cart/fetchData')
+  }
 
   if (to.matched.some(record => record.meta.navHidden))
     store.commit('nav/setNavVisible', false)

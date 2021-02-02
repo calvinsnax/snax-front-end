@@ -16,6 +16,11 @@ export default [
         name: 'profile-orders',
         component: () => import('@/views/profile/ProfileOrders.vue'),
       },
+      {
+        path: 'download',
+        name: 'profile-download',
+        component: () => import('@/views/profile/ProfileDownload.vue'),
+      },
     ],
   },
 ]

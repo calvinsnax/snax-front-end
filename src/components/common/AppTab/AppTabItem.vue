@@ -17,25 +17,38 @@ export default {
 
 <style lang="scss" module scoped>
 .tabItem {
-  margin: 0.125rem;
+  margin-right: 0.25rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
 
   & > a {
     display: inline-block;
-    padding: 0.5rem 1.5rem;
+    padding: 0.375rem 1.25rem;
 
     color: $color-gray-600;
     font-size: 0.875rem;
     font-weight: $font-weight-medium;
     text-decoration: none;
 
-    border-radius: $border-radius-2;
+    border-radius: 6px;
     background-color: transparent;
-    transition: 0.3s;
+    transition: 0.3s ease;
 
     &:global(.router-link-active) {
       color: black;
       background-color: white;
-      box-shadow: rgba(black, 0.1) 0 2px 8px;
+      box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+    }
+
+    @media (max-width: $medium-w) {
+      padding: 0.375rem 0.875rem;
+      font-size: 0.875rem;
+    }
+
+    &:hover {
+      background-color: $color-gray-300;
     }
   }
 }

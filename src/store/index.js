@@ -13,6 +13,7 @@ let moduleList = [
   'cart',
   'order',
   'content',
+  'download',
 ]
 let modules = {}
 

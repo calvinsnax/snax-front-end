@@ -47,6 +47,11 @@ export default {
 
   methods: {
     click(e) {
+      if (this.disabled) {
+        e.preventDefault()
+
+        return
+      }
       this.$emit('click', e)
     },
   },

@@ -16,7 +16,7 @@
       <AppButton color="gray-blue" @click="$emit('input', false)"
         >취소</AppButton
       >
-      <AppButton color="primary" @click="submit">버튼</AppButton>
+      <AppButton color="primary" @click="submit">저장</AppButton>
     </AppDialogActions>
   </AppDialog>
 </template>
@@ -52,12 +52,14 @@ export default {
   },
 
   methods: {
-    ...mapActions('order', ['updatedSiteUrl']),
+    ...mapActions('download', ['updatedSiteUrl']),
 
     submit() {
-      const orderId = this.item._id,
+      const cartId = this.item._id,
         siteUrl = this.siteUrl
-      this.updatedSiteUrl({ orderId, siteUrl })
+      this.updatedSiteUrl({ cartId, siteUrl })
+
+      this.$emit('input', false)
     },
   },
 }

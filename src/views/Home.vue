@@ -48,8 +48,8 @@
             <HomeProductItem
               item-id="aice"
               src="/img/thumb_alice.jpg"
-              title="ALice"
-              desc="커뮤니티 사이트를 위한 최적의 솔루션"
+              title="ALice 게시판 스킨"
+              desc="강렬한 타이포그래피와 트렌디한 구성"
               :price="40000"
               none-padding
             />
@@ -59,20 +59,20 @@
         <HomeCard
           overflow
           :span="2"
-          :to="{ name: 'product', params: { id: 'hsahtag' } }"
+          :to="{ name: 'product', params: { id: 'hashtag' } }"
         >
           <HomeCardMedia src="/img/thumb_hashtag.png" absolute />
 
           <HomeCardBody expand lighten>
-            <HomeCardSubtitle>Alice 게시판 스킨</HomeCardSubtitle>
-            <HomeCardTitle
-              >정교하고 트랜디한 커뮤니티를 구성하세요</HomeCardTitle
-            >
+            <HomeCardSubtitle>#HASHTAG 레이아웃</HomeCardSubtitle>
+            <HomeCardTitle>세련되고 감각적인 사이트를 위해</HomeCardTitle>
 
             <AppSpacer />
 
             <HomeCardDesc
-              >다크 테마를 지원하는 커뮤니티용 테마 패키지</HomeCardDesc
+              >해시태그 레이아웃은 커뮤니티에 최적화된 레이아웃입니다. 다양한
+              커스터마이징 기능으로 나만의 커뮤니티 사이트를
+              구축해보세요.</HomeCardDesc
             >
           </HomeCardBody>
         </HomeCard>
@@ -180,6 +180,7 @@ export default {
 
   @media (max-width: $large-w) {
     grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1.25rem;
   }
 
   & > li {

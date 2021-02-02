@@ -21,8 +21,9 @@ export default {
   & > ul {
     display: inline-flex;
     align-items: center;
-    border-radius: $border-radius-2;
+    border-radius: 8px;
     background-color: $color-gray-200;
+    padding: 0.25rem;
   }
 }
 </style>

@@ -58,15 +58,20 @@ export default {
     },
 
     // 구매하기
-    async purchaseRequest({ getters, commit }, orderInfo) {
+    async purchaseRequest({ state, commit }, orderInfo) {
       try {
         const receiptId = uuidv4()
-        await axios.patch('/order/request', {
+        let title = state.cartList[0].productId.name
+
+        if (state.cartList.length > 1) {
+          title = `${state.cartList[0].productId.name} 외 ${state.cartList
+            .length - 1}개`
+        }
+
+        await axios.post('/order', {
           receiptId,
-          orderInfo: {
-            name: orderInfo.name,
-            totalPrice: getters.getTotalAmount,
-          },
+          title,
+          orderInfo,
         })
 
         commit('setCartList', [])

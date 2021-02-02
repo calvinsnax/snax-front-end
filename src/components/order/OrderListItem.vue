@@ -1,21 +1,17 @@
 <template>
   <li :class="$style.item">
     <router-link
-      :to="{ name: 'product', params: { id: item.productId.id } }"
+      :to="{ name: 'product', params: { id: item.cartItems[0].productId.id } }"
       :class="$style.thumbnail"
     >
-      <img :src="item.productId.thumbnail" :alt="item.productId.name" />
+      <img :src="item.cartItems[0].productId.thumbnail" :alt="item.title" />
     </router-link>
 
     <div :class="$style.body">
-      <div :class="$style.title">{{ item.productId.name }}</div>
+      <div :class="$style.title">{{ item.title }}</div>
 
       <!-- 옵션 -->
       <div :class="$style.optionList">
-        <div :class="$style.option">
-          <span :class="$style.label">라이센스: </span>
-          <span>{{ licenseName }}</span>
-        </div>
         <div :class="$style.option">
           <span :class="$style.label">구매일자: </span>
           <span>{{ item.updatedAt | moment('YYYY-MM-DD HH:mm') }}</span>
@@ -24,86 +20,35 @@
           <span :class="$style.label">제품상태: </span>
           <span>{{ status }}</span>
         </div>
-        <div :class="$style.option">
-          <span :class="$style.label">사이트URL: </span>
-          <span>{{ item.siteUrl || '없음' }}</span>
-        </div>
         <div v-if="!confirmed" :class="$style.option">
           <span :class="$style.label">입금자명: </span>
           <span>{{ item.orderInfo.name || '없음' }}</span>
         </div>
       </div>
 
-      <!-- 승인 후 상태 -->
-      <div v-if="confirmed" class="tw-flex">
-        <!-- 다운로드 버튼 -->
-        <AppButton
-          v-if="downloadEnabled === 1"
-          color="primary"
-          @click="downloadDialogVisible = true"
-          >다운로드</AppButton
-        >
+      <ul :class="$style.productList">
+        <li v-for="(item, index) in item.cartItems" :key="index">
+          <div>{{ item.productId.name }}</div>
+        </li>
+      </ul>
 
-        <el-tooltip
-          v-else-if="downloadEnabled === 2"
-          content="사이트URL을 등록해야 다운로드할 수 있습니다."
-        >
-          <AppButton color="primary" disabled>다운로드</AppButton>
-        </el-tooltip>
-
-        <el-tooltip
-          v-else
-          content="제품을 다운로드할 수 없습니다. 제품 상태를 확인해주세요."
-        >
-          <AppButton color="primary" disabled>다운로드</AppButton>
-        </el-tooltip>
-
-        <AppButton
-          color="gray"
-          class="tw-ml-2"
-          @click="siteUrlDialogVisible = true"
-          >사이트URL 등록</AppButton
-        >
-      </div>
-
-      <div v-else class="tw-flex">
-        <AppButton color="gray" @click="onClickOrderCancel"
+      <div class="tw-flex">
+        <AppButton color="gray" class="tw-mr-2" @click="onClickOrderCancel"
           >주문 철회</AppButton
         >
-      </div>
-
-      <div
-        v-if="confirmed && downloadEnabled === 2"
-        class="tw-pt-2 tw-text-danger tw-text-xs"
-      >
-        사이트URL(도메인)을 입력해야 다운로드할 수 있습니다.
+        <AppButton color="primary" @click="onClickOrderConfirm"
+          >구매 확정</AppButton
+        >
       </div>
     </div>
-
-    <OrderDownload
-      v-if="downloadDialogVisible"
-      v-model="downloadDialogVisible"
-      :cartId="item._id"
-      :productId="item.productId._id"
-    />
-    <OrderSiteUrl
-      v-if="siteUrlDialogVisible"
-      v-model="siteUrlDialogVisible"
-      :item="item"
-    />
   </li>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
-import OrderDownload from './OrderDownload'
-import OrderSiteUrl from './OrderSiteUrl'
 
 export default {
-  components: {
-    OrderDownload,
-    OrderSiteUrl,
-  },
+  components: {},
 
   props: {
     index: Number,
@@ -111,44 +56,24 @@ export default {
   },
 
   data() {
-    return {
-      downloadDialogVisible: false,
-      siteUrlDialogVisible: false,
-    }
+    return {}
   },
 
   computed: {
-    licenseName() {
-      const licenses = {
-        basic: '베이직',
-        premium: '프리미엄',
-        business: '비즈니스',
-      }
-
-      return licenses[this.item.license]
-    },
-
     status() {
-      const statusName = {
-        '-1': '승인 대기 중',
-        1: '구매 완료',
-        2: '다운로드된 상품',
-        20: '환불 요청중인 상품',
-        21: '환불된 상품',
+      const statusNames = {
+        0: '입금 대기 중',
+        1: '승인됨',
+        2: '구매 확정된 주문',
+        20: '취소됨',
+        21: '환불된 주문',
       }
 
-      return statusName[this.item.status]
-    },
-
-    downloadEnabled() {
-      const statusCheck = this.item.status === 1 || this.item.status === 2
-      if (statusCheck && this.item.siteUrl) return 1
-      if (!this.item.siteUrl) return 2
-      return 3
+      return statusNames[this.item.status]
     },
 
     confirmed() {
-      if (this.item.status !== -1) return true
+      if (this.item.status !== 2) return false
       return false
     },
   },
@@ -166,6 +91,39 @@ export default {
       this.siteUrlDialogVisible = true
     },
 
+    onClickOrderConfirm() {
+      if (this.item.status !== 1) {
+        this.$toast.danger({
+          message: '아직 주문이 승인되지 않았습니다.',
+        })
+
+        return
+      }
+
+      this.$confirm(
+        '구매를 확정하면 제품을 다운로드하실 수 있지만 다시는 주문을 철회할 수 없습니다. 정말로 구매를 확정하시겠습니까?',
+        '구매 확정',
+        {
+          confirmButtonText: '예',
+          cancelButtonText: '아니오',
+          type: 'info',
+        },
+      )
+        .then(async () => {
+          const result = await this.$http.patch(
+            `/order/confirm/${this.item._id}`,
+          )
+
+          if (!result) return
+
+          this.orderFetch()
+          this.cartFetch()
+          this.$toast.show({
+            message: '구매가 확정되었습니다. 제품을 다운 받아보세요.',
+          })
+        })
+        .catch(() => {})
+    },
     onClickOrderCancel() {
       this.$confirm(
         '주문을 철회하면 되돌릴 수 없습니다.',
@@ -177,9 +135,9 @@ export default {
         },
       )
         .then(async () => {
-          const result = await this.$http.patch('/order/cancel', {
-            cartId: this.item._id,
-          })
+          const result = await this.$http.patch(
+            `/order/cancel/${this.item._id}`,
+          )
 
           if (!result) return
 
@@ -227,6 +185,7 @@ export default {
     .title {
       font-size: 1rem;
       font-weight: $font-weight-medium;
+      margin-bottom: 0.25rem;
     }
     .optionList {
       margin-bottom: 0.5rem;
@@ -259,5 +218,14 @@ export default {
       }
     }
   }
+}
+
+.productList {
+  list-style-type: disc;
+  padding-left: 30px;
+  margin-bottom: 1rem;
+
+  color: $color-gray-700;
+  font-size: 0.875rem;
 }
 </style>

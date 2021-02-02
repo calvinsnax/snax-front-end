@@ -6,6 +6,7 @@
       <AppTab>
         <AppTabItem :to="{ name: 'profile' }" exact>내 정보</AppTabItem>
         <AppTabItem :to="{ name: 'profile-orders' }">주문내역</AppTabItem>
+        <AppTabItem :to="{ name: 'profile-download' }">다운로드</AppTabItem>
       </AppTab>
     </div>
 

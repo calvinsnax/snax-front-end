@@ -100,11 +100,13 @@ export default {
 
       this.$alert(
         `
+        아래 계좌 정보로 최종 결제 금액(${copiedTotalAmount}원)을 입금해주세요.
+
         은행: 카카오뱅크
         예금주: 윤제제
         계좌번호: 3333-07-9792272
       `,
-        `주문이 완료되었습니다. 아래 계좌 정보로 최종 결제 금액(${copiedTotalAmount}원)을 입금해주세요.`,
+        `주문이 완료되었습니다.`,
         {
           confirmButtonText: '확인',
           callback: () => {
