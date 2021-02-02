@@ -19,7 +19,7 @@
           </router-link>
 
           <router-link :to="{ name: 'register' }">
-            <AppButton color="black">회원가입</AppButton>
+            <AppButton color="black" size="small">회원가입</AppButton>
           </router-link>
         </div>
       </div>
@@ -98,6 +98,13 @@ export default {
     display: flex;
     align-items: center;
     height: 100%;
+  }
+}
+
+@media (max-width: $medium-w) {
+  .navWrap,
+  .nav {
+    height: 3rem;
   }
 }
 

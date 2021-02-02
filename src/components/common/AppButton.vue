@@ -175,7 +175,7 @@ export default {
 
   &.small {
     font-size: 0.875rem;
-    height: 2rem;
+    height: 2.125rem;
     padding: 0 1rem;
   }
 

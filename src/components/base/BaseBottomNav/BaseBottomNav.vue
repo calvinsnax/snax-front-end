@@ -79,7 +79,7 @@ export default {
 
 .navbar {
   padding-bottom: env(safe-area-inset-bottom);
-  background-color: rgba($color-background, 0.9);
+  background-color: rgba(white, 0.9);
   backdrop-filter: $backdrop-filter;
   -webkit-backdrop-filter: $backdrop-filter;
   border-top: 1px solid $color-gray-400;

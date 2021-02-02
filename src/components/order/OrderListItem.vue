@@ -33,10 +33,17 @@
       </ul>
 
       <div class="tw-flex">
-        <AppButton color="gray" class="tw-mr-2" @click="onClickOrderCancel"
+        <AppButton
+          v-if="item.status === 0"
+          color="gray"
+          class="tw-mr-2"
+          @click="onClickOrderCancel"
           >주문 철회</AppButton
         >
-        <AppButton color="primary" @click="onClickOrderConfirm"
+        <AppButton
+          v-if="item.status !== 2"
+          color="primary"
+          @click="onClickOrderConfirm"
           >구매 확정</AppButton
         >
       </div>
