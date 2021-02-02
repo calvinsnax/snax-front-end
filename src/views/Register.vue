@@ -176,14 +176,30 @@ export default {
   methods: {
     ...mapActions('auth', ['register']),
 
-    submit() {
+    async submit() {
       const payload = {
         name: this.name,
         email: this.email,
         password: this.password,
         phone: this.phone,
       }
-      this.register(payload)
+
+      console.log('payload: ', payload)
+
+      const result = await this.register(payload)
+
+      if (!result || !result.success) return
+
+      this.$alert(
+        `가입하신 이메일 주소(${this.email})로 인증 링크를 보냈습니다. 이메일을 확인하고 인증해주세요.`,
+        `이메일 인증 메일이 전송되었습니다.`,
+        {
+          confirmButtonText: '확인',
+          callback: () => {
+            this.$router.push({ name: 'home' })
+          },
+        },
+      )
     },
   },
 }

@@ -2,6 +2,7 @@ import router from '@/router'
 import { auth } from '@/plugins/axios'
 import Cookies from 'js-cookie'
 import toast from '@/components/common/AppToast/AppToastInstance'
+import app from '@/main'
 
 export default {
   namespaced: true,
@@ -63,7 +64,37 @@ export default {
         console.log('ERROR response: ', err.response)
         if (err.response.status === 403) {
           toast.danger({ message: '아이디 또는 비밀번호가 일치하지 않습니다.' })
+          return false
+        } else if (err.response.status === 401) {
+          // toast.danger({ message: '인증 메일을 확인하세요.' })
 
+          app
+            .$confirm(
+              '인증 메일을 확인해주세요. 재발송을 원한다면 아래에 인증메일 재발송 버튼을 클릭하세요.',
+              '인증 메일을 확인하세요.',
+              {
+                confirmButtonText: '인증메일 재발송',
+                cancleButtonText: '닫기',
+              },
+            )
+            .then(async () => {
+              const emailSendResult = await auth.post(
+                `/auth/send_verify_email/`,
+                {
+                  email,
+                },
+              )
+
+              if (!emailSendResult || !emailSendResult.data.success) {
+                toast.danger({ message: '인증메일 발송이 실패했습니다.' })
+                return
+              }
+
+              toast.show({
+                message: '인증메일이 재발송되었습니다. 메일함을 확인해보세요.',
+              })
+            })
+            .catch(() => {})
           return false
         }
 
@@ -71,7 +102,7 @@ export default {
       }
     },
 
-    async register({ dispatch }, { email, name, password, phone }) {
+    async register(undefined, { email, name, password, phone }) {
       try {
         const { data } = await auth.post('/auth/register', {
           email,
@@ -81,7 +112,8 @@ export default {
         })
 
         console.log('register RESULT:: ', data)
-        dispatch('login', { email, password })
+
+        return data
       } catch (err) {
         console.log(err)
       }
