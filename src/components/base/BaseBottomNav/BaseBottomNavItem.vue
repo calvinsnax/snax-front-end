@@ -36,7 +36,7 @@ export default {
   align-items: center;
   height: 100%;
   text-decoration: none;
-  color: $color-gray-900;
+  color: $color-black;
   font-size: 0.6875rem;
   font-weight: $font-weight-medium;
 

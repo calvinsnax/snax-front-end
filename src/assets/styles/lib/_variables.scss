@@ -57,6 +57,9 @@ $color-icon-lighter: #d5d5d5;
 // Button
 $color-button-default-hover: #e6e6e6;
 
+$color-white: white;
+$color-black: black;
+
 // color - grayscale
 $color-gray-100: #fafafa;
 $color-gray-200: #f5f5f5;
@@ -165,6 +168,9 @@ $backdrop-filter: saturate(180%) blur(20px);
   --color-warning: #{$color-warning};
   --color-danger: #{$color-danger};
   --color-info: #{$color-info};
+
+  --color-white: #{$color-white};
+  --color-black: #{$color-black};
 
   // grayscale
   --color-gray-100: #{$color-gray-100};

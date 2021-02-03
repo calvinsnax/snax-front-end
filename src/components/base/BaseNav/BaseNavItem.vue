@@ -39,7 +39,7 @@ export default {
   padding: 0.5rem;
   margin-left: 0.5rem;
 
-  color: black;
+  color: $color-black;
   text-decoration: none;
   border-radius: 100%;
 
@@ -51,10 +51,10 @@ export default {
     font-size: 1.375rem;
 
     path {
-      stroke-width: 1.25px;
+      stroke-width: 1.5;
 
       @media (max-width: $medium-w) {
-        stroke-width: 2px;
+        stroke-width: 2;
       }
     }
   }
