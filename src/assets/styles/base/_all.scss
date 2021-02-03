@@ -18,3 +18,8 @@ hr {
   margin: 1rem 0;
   border-color: $color-gray-300;
 }
+
+::selection {
+  color: $color-white;
+  background-color: $color-gray-900;
+}

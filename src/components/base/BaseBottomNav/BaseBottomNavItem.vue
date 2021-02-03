@@ -39,11 +39,12 @@ export default {
   color: $color-black;
   font-size: 0.6875rem;
   font-weight: $font-weight-medium;
+  appearance: none;
 
   i,
   ion-icon,
   svg {
-    width: 1.5rem;
+    width: 1.765rem;
     height: 1.5rem;
     font-size: 1.5rem;
     /* margin-bottom: 0.25rem; */
