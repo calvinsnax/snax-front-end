@@ -1,6 +1,10 @@
 <template>
-  <div v-if="navVisible" :class="$style.footer">
-    <div class="tw-container tw-mx-auto">
+  <div
+    v-if="navVisible"
+    class="tw-container tw-mx-auto"
+    :class="$style.footerWrap"
+  >
+    <div :class="$style.footer">
       <ul :class="$style.menu">
         <li>
           <a>사이트 소개</a>
@@ -34,11 +38,20 @@ export default {
 </script>
 
 <style lang="scss" module scoped>
+.footerWrap {
+  padding-bottom: 3rem;
+
+  @media (max-width: $medium-w) {
+    padding-bottom: 1.25rem;
+  }
+}
+
 .footer {
-  padding: 3rem 0;
+  padding: 3rem;
   color: $color-gray-700;
   font-size: 0.875rem;
-  background-color: black;
+  background-color: $color-gray-200;
+  border-radius: $border-radius-3;
 
   .menu {
     list-style-type: none;
@@ -68,6 +81,7 @@ export default {
   }
 
   .copyright {
+    color: $color-gray-600;
     font-size: 0.75rem;
   }
 }

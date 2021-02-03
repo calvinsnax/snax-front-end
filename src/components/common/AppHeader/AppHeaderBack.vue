@@ -1,5 +1,5 @@
 <template>
-  <a :class="$style.back" @click="$emit('click', $event)">
+  <a :class="$style.back" @click="onClickBack">
     <div :class="$style.ripple">
       <i class="el-icon-back"></i>
     </div>
@@ -7,7 +7,17 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    custom: [Boolean, String],
+  },
+  methods: {
+    onClickBack(e) {
+      if (!this.custom) this.$router.go(-1)
+      this.$emit('click', e)
+    },
+  },
+}
 </script>
 
 <style lang="scss" module scoped>
@@ -22,7 +32,7 @@ export default {}
   padding-right: 0.5rem;
   margin-left: -1.25rem;
   height: 100%;
-  color: $oc-gray-9;
+  color: $color-gray-900;
   font-size: 1.5rem;
 
   .ripple {
@@ -31,12 +41,11 @@ export default {}
     align-items: center;
     width: 2rem;
     height: 2rem;
-    color: $oc-gray-5;
     border-radius: 100%;
   }
 
   i {
-    color: $oc-gray-9;
+    color: $color-gray-900;
   }
 }
 </style>

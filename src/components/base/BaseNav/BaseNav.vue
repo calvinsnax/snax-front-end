@@ -1,30 +1,32 @@
 <template>
-  <div v-if="navVisible" :class="$style.navWrap">
-    <nav :class="[$style.nav, scrolled && $style.scrolled]">
-      <div :class="$style.navContainer" class="tw-container tw-mx-auto">
-        <router-link :class="$style.logo" to="/">
-          <img src="@/assets/images/logo.svg" alt="SNAX" />
-        </router-link>
-
-        <BaseNavMenu class="tw-hidden md:tw-flex" />
-
-        <AppSpacer />
-
-        <BaseNavProfile v-if="loggedIn" />
-
-        <div v-else class="tw-flex">
-          <router-link :class="$style.login" :to="{ name: 'login' }">
-            <AppIcon name="icons/lock" />
-            <span>로그인</span>
+  <transition mode="out-in">
+    <div v-if="navVisible" :class="$style.navWrap">
+      <nav :class="[$style.nav, scrolled && $style.scrolled]">
+        <div :class="$style.navContainer" class="tw-container tw-mx-auto">
+          <router-link :class="$style.logo" to="/">
+            <img src="@/assets/images/logo.svg" alt="SNAX" />
           </router-link>
 
-          <router-link :to="{ name: 'register' }">
-            <AppButton color="black" size="small">회원가입</AppButton>
-          </router-link>
+          <BaseNavMenu class="tw-hidden md:tw-flex" />
+
+          <AppSpacer />
+
+          <BaseNavProfile v-if="loggedIn" />
+
+          <div v-else class="tw-hidden md:tw-flex">
+            <router-link :class="$style.login" :to="{ name: 'login' }">
+              <AppIcon name="icons/lock" />
+              <span>로그인</span>
+            </router-link>
+
+            <router-link :to="{ name: 'register' }">
+              <AppButton color="black" size="small">회원가입</AppButton>
+            </router-link>
+          </div>
         </div>
-      </div>
-    </nav>
-  </div>
+      </nav>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -76,6 +78,16 @@ export default {
 <style lang="scss" module scoped>
 .navWrap {
   height: $base-nav-height;
+
+  &:global(.v-enter-active),
+  &:global(.v-enter-active) {
+    transition: 0.2s ease;
+  }
+
+  &:global(.v-enter),
+  &:global(.v-leave-active) {
+    opacity: 0;
+  }
 }
 
 .nav {
@@ -89,9 +101,10 @@ export default {
   // transition: background-color 0.3s, box-shadow 0.3s;
 
   &.scrolled {
-    background-color: rgba(white, 0.9);
-    backdrop-filter: saturate(180%) blur(20px);
-    box-shadow: rgba(black, 0.1) 0 1px 0;
+    background-color: white;
+    /* background-color: rgba(white, 0.9);
+    backdrop-filter: saturate(180%) blur(20px); */
+    box-shadow: rgba(black, 0.05) 0 1px 0;
   }
 
   .navContainer {
@@ -104,7 +117,7 @@ export default {
 @media (max-width: $medium-w) {
   .navWrap,
   .nav {
-    height: 3rem;
+    height: 54px;
   }
 }
 

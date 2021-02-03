@@ -36,16 +36,19 @@ export default {
   align-items: center;
   height: 100%;
   text-decoration: none;
-  color: $color-gray-800;
+  color: $color-gray-900;
   font-size: 0.6875rem;
   font-weight: $font-weight-medium;
 
   i,
-  ion-icon {
-    font-size: 1.25rem;
-    margin-bottom: 0.25rem;
+  ion-icon,
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1.5rem;
+    /* margin-bottom: 0.25rem; */
 
-    --ionicon-stroke-width: 2.25rem;
+    --ionicon-stroke-width: 3rem;
 
     &:nth-child(1) {
       display: none;
@@ -55,11 +58,16 @@ export default {
     }
   }
 
+  span {
+    display: none;
+  }
+
   &.router-link-active {
-    color: var(--color-primary);
+    color: var(--color-gray-900);
 
     i,
-    ion-icon {
+    ion-icon,
+    svg {
       --ionicon-stroke-width: 1rem;
 
       &:nth-child(1) {

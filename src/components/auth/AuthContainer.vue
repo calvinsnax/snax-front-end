@@ -1,12 +1,16 @@
 <template>
   <div :class="$style.auth">
-    <div :class="$style.header">
+    <AppHeader xs>
+      <AppHeaderBack />
+      <AppHeaderTitle>로그인</AppHeaderTitle>
+    </AppHeader>
+    <!-- <div :class="$style.header">
       <router-link :to="{ name: 'home' }">
         <AppIcon name="logo" />
       </router-link>
       <AppSpacer />
       <h1>{{ title }}</h1>
-    </div>
+    </div> -->
 
     <div :class="$style.container">
       <slot />
@@ -24,9 +28,19 @@ export default {
 
 <style lang="scss" module scoped>
 .auth {
-  max-width: 26rem;
+  max-width: $small-w;
   padding: 1rem;
   margin: 0 auto;
+
+  &:global(.v-enter-active),
+  &:global(.v-enter-active) {
+    transition: 0.2s ease;
+  }
+
+  &:global(.v-enter),
+  &:global(.v-leave-active) {
+    opacity: 0;
+  }
 
   .header {
     display: flex;

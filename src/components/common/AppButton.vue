@@ -162,9 +162,9 @@ export default {
 
   &.black {
     color: white;
-    background-color: black;
+    background-color: $color-gray-900;
     &:hover {
-      background-color: lighten(black, 10%);
+      background-color: $color-gray-800;
     }
   }
 

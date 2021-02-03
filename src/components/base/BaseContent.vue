@@ -1,6 +1,8 @@
 <template functional>
   <main class="base-content">
-    <slot />
+    <transition mode="out-in">
+      <slot />
+    </transition>
   </main>
 </template>
 
@@ -8,17 +10,18 @@
 export default {}
 </script>
 
-<style lang="scss" scoped>
-// .base-content {
-//   max-width: $small-w;
-//   min-height: calc(100vh - #{$base-nav-height});
-//   margin: 0 auto;
-//   background-color: white;
+<style lang="scss">
+.base-content {
+  & > * {
+    &.v-enter-active,
+    &.v-leave-active {
+      transition: 0.2s ease;
+    }
 
-//   &::after {
-//     content: '';
-//     display: table;
-//     clear: both;
-//   }
-// }
+    &.v-enter,
+    &.v-leave-active {
+      opacity: 0;
+    }
+  }
+}
 </style>

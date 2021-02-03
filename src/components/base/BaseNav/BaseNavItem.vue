@@ -36,8 +36,8 @@ export default {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: 0 0.25rem;
-  margin-left: 1rem;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
 
   color: black;
   text-decoration: none;
@@ -46,9 +46,17 @@ export default {
   i,
   svg,
   ion-icon {
-    width: 1.25rem;
-    height: 1.25rem;
-    font-size: 1.25rem;
+    width: 1.375rem;
+    height: 1.375rem;
+    font-size: 1.375rem;
+
+    path {
+      stroke-width: 1.25px;
+
+      @media (max-width: $medium-w) {
+        stroke-width: 2px;
+      }
+    }
   }
 
   &.is--large {

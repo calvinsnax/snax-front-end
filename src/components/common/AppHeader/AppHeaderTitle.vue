@@ -13,7 +13,7 @@ export default {}
   display: inline-flex;
   color: black;
   font-size: 1rem;
-  font-weight: $font-weight-medium;
+  font-weight: 600;
   // letter-spacing: 6px;
 }
 </style>
