@@ -66,41 +66,18 @@ export default {
 .item {
   cursor: pointer;
   position: relative;
-
-  &:hover {
-    .thumbnail img {
-      transform: scale(1.1);
-    }
-  }
+  padding: 1.5rem;
+  border-radius: $border-radius-3;
+  background-color: $color-gray-200;
 
   .thumbnail {
     position: relative;
     width: 100%;
-    height: 0;
-    padding-bottom: 58%;
+    border-radius: $border-radius-3;
     overflow: hidden;
-    border-radius: $border-radius-2;
 
     & > a {
       display: block;
-    }
-
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-position: center;
-      object-fit: cover;
-
-      transition: 0.3s ease;
-    }
-
-    &:hover {
-      .cartCover {
-        opacity: 1;
-      }
     }
   }
 }
@@ -108,14 +85,14 @@ export default {
 .itemBody {
   cursor: pointer;
   display: block;
-  padding-top: 1rem;
+  padding-top: 1.5rem;
 }
 .category {
   color: $color-gray-600;
   font-size: 0.75rem;
 }
 .name {
-  font-size: 0.875rem;
+  font-size: 1.5rem;
   font-weight: $font-weight-bold;
 }
 .description {

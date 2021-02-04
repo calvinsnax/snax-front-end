@@ -14,6 +14,7 @@ import VueProgressBar from 'vue-progressbar'
 // Directive
 import VueClickOutside from 'vue-click-outside'
 import Vue2Filters from 'vue2-filters'
+import { VueMasonryPlugin } from 'vue-masonry'
 
 // USE
 // ──────────────────────────────────────────────────────
@@ -30,6 +31,7 @@ Vue.use(VueProgressBar, {
   thickness: '4px',
 })
 Vue.use(Vue2Filters)
+Vue.use(VueMasonryPlugin)
 
 // Prototypes
 Vue.prototype.$http = axios
