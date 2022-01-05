@@ -1,4 +1,4 @@
-# malibu-map
+# snax-front-end
 
 ## Project setup
 ```
